@@ -1,0 +1,359 @@
+.product-details-page {
+  padding: 55px 0 90px;
+  background: #0b0b0b;
+}
+
+/* TOPO PADRÃO */
+.product-page__hero {
+  text-align: left;
+  max-width: 960px;
+  margin-bottom: 42px;
+}
+
+.page__badge {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: var(--color-secondary);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.product-page__hero h1 {
+  font-size: 3rem;
+  line-height: 1.1;
+  margin: 0;
+}
+
+/* MAIN */
+.product-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 34px;
+  align-items: start;
+}
+
+/* GALLERY */
+.product-gallery__main {
+  height: 520px;
+  border-radius: 22px;
+  background: #ffffff;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-gallery__main img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.product-gallery__thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.thumb {
+  height: 96px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: #ffffff;
+  padding: 10px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.thumb.active,
+.thumb:hover {
+  border-color: var(--color-primary);
+}
+
+/* INFO */
+.product-info {
+  padding: 30px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.product-info__measure {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: var(--color-secondary);
+  font-weight: 600;
+}
+
+.product-info h2 {
+  font-size: 2rem;
+  line-height: 1.2;
+  margin-bottom: 18px;
+}
+
+.product-info__price {
+  display: block;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.product-info__installment {
+  display: block;
+  color: rgba(255,255,255,0.68);
+  margin-bottom: 24px;
+}
+
+/* BENEFITS */
+.product-info__benefits {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.product-info__benefits li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255,255,255,0.78);
+}
+
+.product-info__benefits svg {
+  color: var(--color-primary);
+}
+
+/* QUANTITY */
+.product-qty {
+  margin-bottom: 28px;
+}
+
+.product-qty span {
+  display: block;
+  margin-bottom: 10px;
+  color: rgba(255,255,255,0.72);
+}
+
+.qty-box {
+  width: 150px;
+  height: 48px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+}
+
+.qty-box button {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qty-box strong {
+  font-size: 1rem;
+}
+
+/* ACTIONS */
+.product-actions {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 14px;
+}
+
+.btn-primary,
+.btn-outline {
+  height: 50px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  border: none;
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.05);
+}
+
+.btn-outline {
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.03);
+  color: #fff;
+}
+
+.btn-outline:hover {
+  border-color: rgba(255,255,255,0.18);
+}
+
+/* SPECS */
+.product-specs {
+  margin-top: 60px;
+  padding: 30px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.product-specs h3 {
+  font-size: 1.5rem;
+  margin-bottom: 24px;
+}
+
+.product-specs__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.product-specs__grid div {
+  padding: 18px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.02);
+}
+
+.product-specs__grid span {
+  display: block;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 6px;
+}
+
+.product-specs__grid strong {
+  font-size: 1rem;
+}
+
+/* RELATED */
+.related-products {
+  margin-top: 60px;
+}
+
+.related-products h3 {
+  font-size: 1.5rem;
+  margin-bottom: 24px;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.related-card {
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.related-card__image {
+  height: 230px;
+  background: #ffffff;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.related-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.related-card__content {
+  padding: 22px;
+}
+
+.related-card__content h4 {
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
+
+.related-card__content span {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.related-card__content button {
+  width: 100%;
+  height: 44px;
+  border: none;
+  border-radius: 999px;
+  background: var(--color-primary);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* RESPONSIVO */
+@media (max-width: 1100px) {
+  .product-main {
+    grid-template-columns: 1fr;
+  }
+
+  .product-specs__grid,
+  .related-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .product-details-page {
+    padding: 120px 0 70px;
+  }
+
+  .product-page__hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .product-gallery__main {
+    height: 360px;
+  }
+
+  .product-actions,
+  .product-specs__grid,
+  .related-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-info {
+    padding: 22px;
+  }
+
+  .thumb {
+    height: 78px;
+  }
+}

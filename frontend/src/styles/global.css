@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Cores principais */
+  --color-primary: #e30613;
+  --color-secondary: #f4c400;
+  --color-dark: #0d0d0d;
+  --color-dark-light: #1a1a1a;
+  --color-text: #ffffff;
+  --color-text-muted: #bdbdbd;
+  --color-border: #2a2a2a;
+  --color-background: #111111;
+
+  /* Layout */
+  --container-width: 1200px;
+  --transition: 0.3s ease;
+  --radius: 10px;
+}
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  scroll-behavior: auto;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 100%);
+  color: var(--color-text);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+section {
+  width: 100%;
+}
+
+
+.text-red {
+  color: var(--color-primary);
+}
+
+.text-gold {
+  color: #f3c623;
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}

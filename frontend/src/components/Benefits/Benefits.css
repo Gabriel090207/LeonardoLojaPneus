@@ -1,0 +1,165 @@
+.benefits {
+  padding: 125px 0;
+  background: linear-gradient(180deg, #141414 0%, #1b1b1b 100%);
+}
+
+.benefits__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 34px;
+  margin-top: 55px;
+}
+
+.benefits__card {
+  text-align: center;
+  padding: 10px;
+}
+
+.benefits__icon {
+  width: 84px;
+  height: 84px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: rgba(227, 6, 19, 0.08);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.8rem;
+}
+
+.benefits__card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+}
+
+.benefits__card p {
+  max-width: 240px;
+  margin: 0 auto;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+@media (max-width: 1100px) {
+  .benefits__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .benefits {
+    padding: 70px 0;
+  }
+
+  .benefits__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .benefits__icon {
+    width: 66px;
+    height: 66px;
+    font-size: 1.8rem;
+  }
+}
+
+
+/* RESPONSIVO BENEFITS */
+
+/* TABLET */
+@media (max-width: 1024px) {
+  .benefits {
+    padding: 90px 0;
+  }
+
+  .benefits__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    margin-top: 42px;
+  }
+
+  .benefits__card {
+    padding: 6px;
+  }
+
+  .benefits__icon {
+    width: 72px;
+    height: 72px;
+    margin-bottom: 18px;
+    font-size: 2.2rem;
+  }
+
+  .benefits__card h3 {
+    font-size: 1.12rem;
+  }
+
+  .benefits__card p {
+    font-size: 0.95rem;
+    max-width: 260px;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .benefits {
+    padding: 70px 0;
+  }
+
+  .benefits__grid {
+    grid-template-columns: 1fr;
+    gap: 34px;
+    margin-top: 34px;
+  }
+
+  .benefits__icon {
+    width: 66px;
+    height: 66px;
+    font-size: 1.8rem;
+    margin-bottom: 16px;
+  }
+
+  .benefits__card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+  }
+
+  .benefits__card p {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    max-width: 100%;
+  }
+
+  .section-header p {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+}
+
+/* SMALL MOBILE */
+@media (max-width: 480px) {
+  .benefits {
+    padding: 58px 0;
+  }
+
+  .benefits__grid {
+    gap: 28px;
+  }
+
+  .benefits__icon {
+    width: 58px;
+    height: 58px;
+    font-size: 1.55rem;
+  }
+
+  .benefits__card h3 {
+    font-size: 1rem;
+  }
+
+  .benefits__card p {
+    font-size: 0.88rem;
+  }
+}

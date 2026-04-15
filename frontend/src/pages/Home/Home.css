@@ -1,0 +1,23 @@
+.home {
+  width: 100%;
+  background: linear-gradient(180deg, #0b0b0b 0%, #111111 45%, #0b0b0b 100%);
+}
+
+.home__content {
+  width: 100%;
+}
+
+.home__placeholder {
+  min-height: 120vh;
+  padding: 80px 0;
+}
+
+.home__placeholder h1 {
+  font-size: 2.4rem;
+  margin-bottom: 12px;
+}
+
+.home__placeholder p {
+  color: var(--color-text-muted);
+  font-size: 1rem;
+}
