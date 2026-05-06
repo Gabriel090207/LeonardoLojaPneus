@@ -1,0 +1,267 @@
+.account {
+  padding-top: 170px;
+  min-height: 100vh;
+  background: #111;
+}
+
+/* CONTAINER */
+.accountContainer {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* TITULO */
+.accountTitle {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+/* GRID */
+.accountGrid {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 24px;
+}
+
+/* MENU */
+.accountMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.accountMenu button {
+  height: 46px;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+
+  border: 1px solid rgba(255,255,255,0.1);
+  background: transparent;
+  color: #fff;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.accountMenu button.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* CONTENT */
+.accountContent {
+  display: flex;
+}
+
+/* CARD */
+.accountCard {
+  width: 100%;
+  background: #0d0d0d;
+  padding: 20px;
+  border-radius: 16px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+/* INPUT */
+.accountCard input {
+  height: 46px;
+  padding: 0 12px;
+
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.08);
+
+  background: #111;
+  color: #fff;
+
+  outline: none;
+  transition: 0.2s;
+}
+
+/* 🔥 FOCUS VERMELHO */
+.accountCard input:focus {
+ border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+/* PEDIDOS */
+.ordersList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* CARD PEDIDO */
+.orderCard {
+  background: #111;
+  padding: 14px;
+  border-radius: 12px;
+
+  border: 1px solid rgba(255,255,255,0.06);
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  transition: 0.2s;
+}
+
+.orderCard:hover {
+  border-color: var(--color-primary);
+}
+
+/* TOP */
+.orderTop {
+  display: flex;
+  justify-content: space-between;
+}
+
+.orderTop span {
+  color: #aaa;
+}
+
+.orderTop strong {
+  color: var(--color-primary);
+}
+
+/* BOTTOM */
+.orderBottom {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.orderBottom span {
+  color: #aaa;
+}
+
+/* EMPTY */
+.emptyMsg {
+  color: #aaa;
+}
+
+/* LOADING */
+.accountLoading {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* RESPONSIVO */
+@media (max-width: 900px) {
+  .accountGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.saveBtn {
+  height: 48px;
+  border-radius: 10px;
+
+  border: none;
+  background: var(--color-primary);
+  color: #fff;
+
+  font-weight: 600;
+  cursor: pointer;
+
+  margin-top: 10px;
+  transition: 0.2s;
+}
+
+.saveBtn:hover {
+  opacity: 0.9;
+}
+
+/* LOADING */
+.saveBtn.loading {
+  position: relative;
+  color: transparent;
+}
+
+.saveBtn.loading::after {
+  content: "";
+  width: 18px;
+  height: 18px;
+
+  border: 2px solid #fff;
+  border-top: 2px solid transparent;
+
+  border-radius: 50%;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+
+
+.verifyEmailCard {
+  padding: 14px;
+  border-radius: 12px;
+
+  background: rgba(227, 6, 19, 0.08);
+  border: 1px solid rgba(227, 6, 19, 0.28);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.verifyEmailCard div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.verifyEmailCard strong {
+  color: #fff;
+  font-size: 14px;
+}
+
+.verifyEmailCard span {
+  color: rgba(255,255,255,0.7);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.verifyEmailCard button {
+  height: 38px;
+  padding: 0 14px;
+
+  border-radius: 999px;
+  border: none;
+
+  background: var(--color-primary);
+  color: #fff;
+
+  cursor: pointer;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.verifyEmailCard button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}

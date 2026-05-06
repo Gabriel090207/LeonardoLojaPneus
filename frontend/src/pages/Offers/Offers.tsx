@@ -1,68 +1,90 @@
-import './Offers.css'
-import offerBanner from '../../assets/ofers-banner.png'
-import tireImg from '../../assets/product-tire.png'
+import "./Offers.css";
+import offerBanner from "../../assets/ofers-banner.png";
+
+import { useEffect, useState } from "react";
+import { db } from "../../services/firebase";
+import { collection, onSnapshot } from "firebase/firestore";
+import { Link } from "react-router-dom";
 
 function Offers() {
-  const offers = [
-    {
-      id: 1,
-      name: 'Pneu Aro 15 Performance',
-      oldPrice: 'R$ 599,90',
-      price: 'R$ 499,90',
-      installment: '10x de R$ 49,99 sem juros',
-      benefits: ['Alta durabilidade', 'Garantia de 5 anos', 'Certificado Inmetro'],
-      badge: '17% OFF',
-    },
-    {
-      id: 2,
-      name: 'Pneu SUV Premium Grip',
-      oldPrice: 'R$ 689,90',
-      price: 'R$ 589,90',
-      installment: '10x de R$ 58,99 sem juros',
-      benefits: ['Maior estabilidade', 'Excelente aderência', 'Uso urbano e estrada'],
-      badge: '15% OFF',
-    },
-    {
-      id: 3,
-      name: 'Pneu Caminhonete All Road',
-      oldPrice: 'R$ 749,90',
-      price: 'R$ 649,90',
-      installment: '10x de R$ 64,99 sem juros',
-      benefits: ['Resistente a carga', 'Tração reforçada', 'Longa vida útil'],
-      badge: '13% OFF',
-    },
-    {
-      id: 4,
-      name: 'Pneu Aro 14 Econômico',
-      oldPrice: 'R$ 459,90',
-      price: 'R$ 379,90',
-      installment: '10x de R$ 37,99 sem juros',
-      benefits: ['Baixo consumo', 'Uso urbano', 'Excelente custo-benefício'],
-      badge: '18% OFF',
-    },
-    {
-      id: 5,
-      name: 'Pneu SUV Confort Drive',
-      oldPrice: 'R$ 719,90',
-      price: 'R$ 629,90',
-      installment: '10x de R$ 62,99 sem juros',
-      benefits: ['Rodagem silenciosa', 'Conforto premium', 'Maior aderência'],
-      badge: '12% OFF',
-    },
-    {
-      id: 6,
-      name: 'Pneu Utility Road',
-      oldPrice: 'R$ 829,90',
-      price: 'R$ 729,90',
-      installment: '10x de R$ 72,99 sem juros',
-      benefits: ['Alta resistência', 'Ideal para carga', 'Vida útil prolongada'],
-      badge: '12% OFF',
-    },
-  ]
+  const [offers, setOffers] = useState<any[]>([]);
+  const [products, setProducts] = useState<any[]>([]);
+
+  // 🔥 BUSCAR PRODUCTS
+  useEffect(() => {
+    const ref = collection(db, "products");
+
+    const unsubscribe = onSnapshot(ref, (snapshot) => {
+      const list: any[] = [];
+
+      snapshot.forEach((doc) => {
+        list.push({
+          id: doc.id,
+          ...doc.data(),
+        });
+      });
+
+      setProducts(list);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  // 🔥 BUSCAR OFFERS + JUNTAR COM PRODUCTS
+  useEffect(() => {
+    const ref = collection(db, "offers");
+
+    const unsubscribe = onSnapshot(ref, (snapshot) => {
+      const list: any[] = [];
+
+      snapshot.forEach((doc) => {
+        const data = doc.data();
+
+        const product = products.find((p) => p.id === data.productId);
+
+        if (product) {
+          list.push({
+            id: doc.id,
+            ...product,
+            oldPrice: data.oldPrice,
+            price: data.newPrice,
+          });
+        }
+      });
+
+      setOffers(list);
+    });
+
+    return () => unsubscribe();
+  }, [products]);
+
+  // 🔥 % DESCONTO
+  const getDiscount = (price: number, oldPrice: number) => {
+    if (!price || !oldPrice) return "";
+
+    const percent = ((oldPrice - price) / oldPrice) * 100;
+
+    return `${Math.round(percent)}% OFF`;
+  };
+
+  // 🔥 PARCELAMENTO
+  const getInstallment = (price: number, max = 10) => {
+    if (!price) return "";
+
+    const value = price / max;
+
+    return `${max}x de ${value.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    })} sem juros`;
+  };
 
   return (
     <section className="offers-page">
       <div className="container">
+
         {/* HERO */}
         <div className="offers-hero">
           <img src={offerBanner} alt="Ofertas especiais" />
@@ -70,9 +92,7 @@ function Offers() {
           <div className="offers-hero__content">
             <span className="page__badge">Ofertas</span>
 
-            <h1>
-              Promoções especiais em pneus
-            </h1>
+            <h1>Promoções especiais em pneus</h1>
 
             <p>
               Aproveite preços exclusivos, estoque limitado e condições imperdíveis.
@@ -80,47 +100,69 @@ function Offers() {
           </div>
         </div>
 
+        {/* 🔥 SEM OFERTAS */}
+        {offers.length === 0 && (
+          <div className="offers-empty">
+            <h3>Nenhuma oferta no momento</h3>
+            <p>Volte em breve para conferir novas promoções 🔥</p>
+          </div>
+        )}
+
         {/* GRID */}
         <div className="offers-grid">
           {offers.map((product) => (
             <article className="offer-card" key={product.id}>
-              <span className="offer-card__badge">{product.badge}</span>
+
+              <span className="offer-card__badge">
+                {getDiscount(product.price, product.oldPrice)}
+              </span>
 
               <div className="offer-card__image">
-                <img src={tireImg} alt={product.name} />
+                <img src={product.image} alt={product.name} />
               </div>
 
               <div className="offer-card__content">
                 <h3>{product.name}</h3>
 
                 <ul className="offer-card__benefits">
-                  {product.benefits.map((item, index) => (
+                  {product.highlights?.map((item: string, index: number) => (
                     <li key={index}>{item}</li>
                   ))}
                 </ul>
 
                 <span className="offer-card__old-price">
-                  {product.oldPrice}
+                  {Number(product.oldPrice).toLocaleString("pt-BR", {
+                    style: "currency",
+                    currency: "BRL",
+                  })}
                 </span>
 
                 <span className="offer-card__price">
-                  {product.price}
+                  {Number(product.price).toLocaleString("pt-BR", {
+                    style: "currency",
+                    currency: "BRL",
+                  })}
                 </span>
 
                 <span className="offer-card__installment">
-                  {product.installment}
+                  {getInstallment(product.price)}
                 </span>
 
-                <button className="offer-card__button">
+                <Link
+                  to={`/pneus/${product.brandSlug}/${product.slug}`}
+                  className="offer-card__button"
+                >
                   Aproveitar oferta
-                </button>
+                </Link>
+
               </div>
             </article>
           ))}
         </div>
+
       </div>
     </section>
-  )
+  );
 }
 
-export default Offers
+export default Offers;

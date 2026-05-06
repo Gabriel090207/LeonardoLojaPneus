@@ -1,0 +1,315 @@
+/* OVERLAY */
+.authOverlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.75);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 9999;
+
+  animation: fadeIn 0.3s ease;
+}
+
+/* MODAL */
+.authModal {
+  width: 700px;
+  max-width: 90%;
+  max-height: 90vh;
+
+  overflow-y: auto;
+
+  background: #111;
+  border-radius: 12px;
+  padding: 24px;
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  z-index: 10000;
+
+ 
+}
+
+/* HEADER */
+.authHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.authHeader h2 {
+  font-size: 20px;
+}
+
+.authHeader button {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* BODY */
+.authBody {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* INPUT */
+.authBody input {
+  height: 44px;
+  padding: 0 12px;
+
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.08);
+
+  background: #0d0d0d;
+  color: #fff;
+
+  outline: none;
+  transition: 0.2s;
+}
+
+/* 🔥 FOCUS */
+.authBody input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+/* GRID */
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* BOTÃO */
+.authBtn {
+  height: 46px;
+  border-radius: 8px;
+
+  border: none;
+  background: var(--color-primary);
+  color: #fff;
+
+  font-weight: 600;
+  cursor: pointer;
+
+  margin-top: 10px;
+  transition: 0.2s;
+}
+
+.authBtn:hover {
+  opacity: 0.9;
+}
+
+/* SWITCH */
+.authSwitch {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
+  color: #aaa;
+}
+
+.authSwitch b {
+  color: #fff;
+  cursor: pointer;
+}
+
+/* ANIMAÇÕES */
+@keyframes fadeIn {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+
+
+.passwordGroup {
+  position: relative;
+  display: flex;
+}
+
+.passwordGroup input {
+  width: 100%;
+  padding-right: 40px;
+}
+
+.passwordGroup button {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  background: none;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+}
+
+
+
+@media (max-width: 768px) {
+
+  /* =========================
+     OVERLAY MODOS
+  ========================= */
+
+  /* 🔥 LOGIN CENTRALIZADO */
+  .authOverlay.center {
+    align-items: center;
+    padding: 0;
+  }
+
+  /* 🔥 CADASTRO NO TOPO */
+  .authOverlay.top {
+    align-items: flex-start;
+    padding: 24px 0;
+    overflow-y: auto;
+  }
+
+  /* =========================
+     MODAL
+  ========================= */
+  .authModal {
+    width: 92%;
+    margin: 0 auto;
+
+    max-height: none;
+
+    padding: 18px;
+    border-radius: 12px;
+  }
+
+  /* =========================
+     HEADER
+  ========================= */
+  .authHeader h2 {
+    font-size: 18px;
+  }
+
+  /* =========================
+     BODY
+  ========================= */
+  .authBody {
+    gap: 12px;
+  }
+
+  /* =========================
+     INPUTS
+  ========================= */
+  .authBody input {
+    height: 46px;
+    font-size: 14px;
+  }
+
+  /* =========================
+     GRID → COLUNA
+  ========================= */
+  .grid2 {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  /* =========================
+     PASSWORD ICON
+  ========================= */
+  .passwordGroup button {
+    right: 10px;
+  }
+
+  /* =========================
+     BOTÃO
+  ========================= */
+  .authBtn {
+    height: 48px;
+
+    width: 100%;
+    max-width: 320px;
+
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* =========================
+     SWITCH
+  ========================= */
+  .authSwitch {
+    font-size: 13px;
+  }
+}
+
+
+
+
+
+
+
+.authBtn.loading {
+  position: relative;
+  color: transparent;
+}
+
+.authBtn.loading::after {
+  content: "";
+  width: 18px;
+  height: 18px;
+
+  border: 2px solid #fff;
+  border-top: 2px solid transparent;
+
+  border-radius: 50%;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+
+
+/* SAÍDA OVERLAY */
+.authOverlay.closing {
+  animation: fadeOut 0.25s ease forwards;
+}
+
+/* SAÍDA MODAL */
+.authOverlay.closing .authModal {
+  animation: scaleOut 0.25s ease forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes scaleOut {
+  to {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+}

@@ -1,0 +1,144 @@
+.about-page {
+  padding: 175px 0 90px;
+  background: #111;
+}
+
+.about-page__hero {
+  max-width: 960px;
+  margin-bottom: 42px;
+}
+
+.page__badge {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: var(--color-secondary);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.about-page__hero h1 {
+  font-size: 3rem;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.about-page__hero p {
+  max-width: 1250px;
+  margin-top: 18px;
+  color: rgba(255,255,255,0.72);
+  line-height: 1.7;
+}
+
+.about-page__content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.about-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 22px;
+  padding: 28px;
+  transition: var(--transition);
+}
+
+.about-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(227,6,19,0.28);
+}
+
+.about-card--large {
+  padding: 34px;
+}
+
+.about-card span,
+.about-highlight span {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: var(--color-secondary);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.about-card h2 {
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+}
+
+.about-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+}
+
+.about-card p {
+  color: rgba(255,255,255,0.72);
+  line-height: 1.75;
+  margin-bottom: 12px;
+}
+
+.about-card p:last-child {
+  margin-bottom: 0;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.about-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.about-list strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.about-highlight {
+  padding: 34px;
+  border-radius: 22px;
+  background: linear-gradient(
+    135deg,
+    rgba(227,6,19,0.18),
+    rgba(255,255,255,0.02)
+  );
+  border: 1px solid rgba(227,6,19,0.22);
+}
+
+.about-highlight h2 {
+  max-width: 760px;
+  font-size: 2rem;
+  line-height: 1.25;
+}
+
+@media (max-width: 900px) {
+  .about-grid,
+  .about-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-page {
+    padding: 120px 0 70px;
+  }
+
+  .about-page__hero h1 {
+    font-size: 2.3rem;
+  }
+
+  .about-card,
+  .about-card--large,
+  .about-highlight {
+    padding: 22px;
+  }
+
+  .about-highlight h2 {
+    font-size: 1.55rem;
+  }
+}

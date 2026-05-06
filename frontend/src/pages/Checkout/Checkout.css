@@ -1,0 +1,504 @@
+.checkout {
+  padding-top: 170px;
+  min-height: 98vh;
+  background: #111;
+}
+
+.checkoutContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.checkout h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+/* CARD */
+.checkoutCard {
+  padding: 24px;
+  background: #111;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* TITULO */
+.checkoutCard h3 {
+  margin-bottom: 16px;
+}
+
+/* SWITCH */
+.addressOptions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.addressOptions button {
+  flex: 1;
+  height: 48px;
+
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+
+  background: transparent;
+  color: #fff;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.addressOptions button.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* FORM */
+.addressForm {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* INPUT */
+.addressForm input {
+  height: 48px;
+  padding: 0 14px;
+
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.08);
+
+  background: #0d0d0d;
+  color: #fff;
+
+  outline: none;
+  transition: 0.2s;
+}
+
+/* FOCO */
+.addressForm input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+/* GRID */
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* BOTÃO */
+.checkoutAction {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.nextBtn {
+  width: 280px;
+  height: 38px;
+
+  border-radius: 10px;
+  border: none;
+
+  background: var(--color-primary);
+  color: #fff;
+
+  font-weight: 600;
+  font-size: 15px;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.nextBtn:hover {
+  opacity: 0.9;
+}
+
+/* LOADING */
+.checkoutLoading {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+
+
+/* =========================
+   CONTAINER STEP 2
+========================= */
+.checkoutStep2 {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* =========================
+   GRID
+========================= */
+.checkoutGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+/* =========================
+   CARD PADRÃO
+========================= */
+.checkoutCard {
+  background: #0d0d0d;
+  padding: 22px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.06);
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  min-height: 280px; /* 🔥 ajuda o total ficar mais embaixo */
+}
+
+/* HOVER SUAVE */
+.checkoutCard:hover {
+  border-color: rgba(255,255,255,0.12);
+}
+
+/* TITULOS */
+.checkoutCard h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* =========================
+   RESUMO
+========================= */
+
+.summaryBox {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.summaryItems {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.summaryItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 15px;
+}
+
+/* ITEM COM IMAGEM */
+.summaryItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* LADO ESQUERDO */
+.itemLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* IMAGEM */
+.itemLeft img {
+  width: 60px;
+  height: 60px;
+
+  object-fit: cover; /* 🔥 preenche tudo */
+
+  border-radius: 10px;
+
+  background: #111;
+}
+
+/* TEXTO */
+.itemLeft p {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.itemLeft span {
+  font-size: 13px;
+  color: #aaa;
+}
+
+
+.summaryItem span {
+  color: #aaa;
+}
+
+.summaryItem strong {
+  font-weight: 600;
+}
+
+/* TOTAL FIXO EMBAIXO */
+.summaryTotal {
+  margin-top: auto;
+
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 18px;
+}
+
+.summaryTotal strong {
+  font-size: 22px;
+  color: #fff;
+}
+
+/* =========================
+   USER INFO (ENDEREÇO)
+========================= */
+
+.userInfo {
+  background: #111;
+  padding: 14px;
+  border-radius: 12px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  color: #aaa;
+  line-height: 1.4;
+}
+
+/* =========================
+   PAGAMENTO
+========================= */
+
+.paymentOptions {
+  display: flex;
+  gap: 10px;
+}
+
+.paymentOptions button {
+  flex: 1;
+  height: 46px;
+
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+
+  background: transparent;
+  color: #fff;
+
+  font-weight: 500;
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.paymentOptions button:hover {
+  border-color: var(--color-primary);
+}
+
+/* ATIVO */
+.paymentOptions button.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* PIX TEXTO */
+.pixBox {
+  font-size: 14px;
+  color: #aaa;
+  margin-top: 4px;
+}
+
+/* =========================
+   BOTÃO CENTRAL
+========================= */
+
+/* AÇÕES */
+.checkoutActions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* VOLTAR */
+.backBtn {
+  height: 38px;
+  padding: 0 24px;
+
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+
+  background: transparent;
+  color: #fff;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.backBtn:hover {
+  border-color: #fff;
+}
+
+/* CONFIRMAR */
+.confirmBtn {
+  height: 38px;
+  padding: 0 28px;
+
+  border-radius: 10px;
+  border: none;
+
+  background: var(--color-primary);
+  color: #fff;
+
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.confirmBtn:hover {
+  opacity: 0.9;
+}
+
+.checkoutActions .nextBtn {
+  width: 100%;
+  max-width: 320px;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 900px) {
+  .checkoutGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .checkoutCard {
+    min-height: auto;
+  }
+}
+
+
+/* =========================
+   AJUSTE ENTRE ELEMENTOS
+========================= */
+
+/* endereço mais próximo */
+.userInfo {
+  margin-top: -18px; /* antes estava muito longe */
+}
+
+/* título pagamento mais destacado */
+.checkoutCard h3 + .paymentOptions {
+  margin-top: -18px;
+}
+
+/* espaço maior antes do título pagamento */
+.paymentTitle {
+  margin-top: 15px;
+}
+
+/* botões mais próximos do título */
+.paymentOptions {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px; /* 🔥 aproxima do título */
+}
+
+/* botão padrão */
+.paymentOptions button {
+  flex: 1;
+  height: 38px;
+
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+
+  background: transparent;
+  color: #fff;
+
+  font-weight: 500;
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.paymentOptions button.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* texto pix */
+.pixBox {
+  margin-top: 6px;
+}
+
+
+
+
+.paymentContent {
+  margin-top: 8px;
+}
+
+.cardForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* INPUT PADRÃO */
+.cardForm input,
+.authBody input {
+  height: 46px;
+  padding: 0 12px;
+
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.08);
+
+  background: #111;
+  color: #fff;
+
+  outline: none; /* remove padrão */
+  transition: 0.2s;
+}
+
+/* 🔥 FOCUS SEMPRE VERMELHO */
+.cardForm input:focus,
+.authBody input:focus {
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 1px var(--color-primary) !important;
+}
+
+.cardNumberWrapper {
+  position: relative;
+}
+
+.cardNumberWrapper input {
+  width: 100%;
+  padding-right: 50px; /* espaço pro ícone */
+}
+
+.cardBrand {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 32px;
+  height: auto;
+}
+

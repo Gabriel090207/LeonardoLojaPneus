@@ -42,7 +42,7 @@
 }
 
 .footer__column a:hover {
-  color: #ffffff;
+  color: var(--color-secondary);
 }
 
 .footer__info {

@@ -1,5 +1,6 @@
 import './Units.css'
 import { FiMapPin, FiPhone, FiClock } from 'react-icons/fi'
+import { FaWhatsapp } from 'react-icons/fa'
 import unitImg from '../../assets/units-default.jpeg'
 
 function Units() {
@@ -51,6 +52,41 @@ function Units() {
     },
   ]
 
+  const getWhatsAppLink = (phone: string) => {
+  const clean = phone.replace(/\D/g, '')
+  return `https://wa.me/55${clean}`
+}
+
+const getMapsLink = (address: string) => {
+  const encoded = encodeURIComponent(address)
+  return `https://www.google.com/maps/search/?api=1&query=${encoded}`
+}
+
+
+const openRoute = (address: string) => {
+  if (!navigator.geolocation) {
+    window.open(getMapsLink(address), "_blank");
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      const lat = position.coords.latitude;
+      const lng = position.coords.longitude;
+
+      const destination = encodeURIComponent(address);
+
+      const url = `https://www.google.com/maps/dir/?api=1&origin=${lat},${lng}&destination=${destination}`;
+
+      window.open(url, "_blank");
+    },
+    () => {
+      // se negar permissão → fallback
+      window.open(getMapsLink(address), "_blank");
+    }
+  );
+};
+
   return (
     <section className="units-page">
       <div className="container">
@@ -92,13 +128,22 @@ function Units() {
                 </div>
 
                 <div className="unit-card__actions">
-                  <a href="#" className="btn-outline">
-                    Ver rota
-                  </a>
+                 <button
+  onClick={() => openRoute(unit.address)}
+  className="btn-outline1"
+>
+  Ver rota
+</button>
 
-                  <a href="#" className="btn-primary">
-                    WhatsApp
-                  </a>
+<a
+  href={getWhatsAppLink(unit.whatsapp)}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="btn-primary1"
+>
+  <FaWhatsapp />
+  WhatsApp
+</a>
                 </div>
               </div>
             </article>

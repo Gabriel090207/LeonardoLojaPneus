@@ -1,0 +1,138 @@
+/* OVERLAY */
+.orderOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0,0,0,0.7);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 999;
+
+  animation: fadeIn 0.3s ease;
+}
+
+/* MODAL */
+.orderModal {
+  width: 650px;
+  max-height: 90vh;
+  overflow-y: auto;
+
+  background: #111;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+
+  padding: 24px;
+
+  animation: scaleIn 0.3s ease;
+}
+
+/* HEADER */
+.orderHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.orderHeader button {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* SEÇÕES */
+.orderSection {
+  margin-top: 20px;
+}
+
+.orderSection h3 {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+/* PRODUTOS */
+.orderProducts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.orderItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+
+  padding: 10px;
+}
+
+.orderItem img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.orderItem .info {
+  flex: 1;
+  margin-left: 10px;
+}
+
+.orderItem .name {
+  font-size: 14px;
+}
+
+.orderItem .price {
+  font-weight: bold;
+}
+
+/* FOOTER */
+.orderFooter {
+  margin-top: 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* STATUS */
+.statusBox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  width: fit-content; /* 🔥 chave */
+}
+
+.statusBox .selectInput {
+  height: 34px;            /* 🔥 menor só no status */
+
+}
+
+
+/* ANIMAÇÕES (PADRÃO DO PROJETO) */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+

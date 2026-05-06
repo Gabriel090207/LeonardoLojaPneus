@@ -1,6 +1,6 @@
 .product-details-page {
   padding: 175px 0 90px;
-  background: #0b0b0b;
+  background: #111;
 }
 
 /* TOPO PADRÃO */
@@ -36,17 +36,18 @@
 .product-gallery__main {
   height: 520px;
   border-radius: 22px;
-  background: #ffffff;
-  padding: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+  padding: 0; /* 🔥 remove espaço */
+  background: none; /* 🔥 remove fundo */
+
+  overflow: hidden; /* 🔥 importante */
 }
+
 
 .product-gallery__main img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover; /* 🔥 ESSENCIAL */
 }
 
 .product-gallery__thumbs {
@@ -60,8 +61,11 @@
   height: 96px;
   border-radius: 16px;
   border: 1px solid rgba(255,255,255,0.06);
-  background: #ffffff;
-  padding: 10px;
+
+  background: none;   /* 🔥 remove o fundo branco */
+  padding: 0;         /* 🔥 remove espaço interno */
+  overflow: hidden;   /* 🔥 corta certinho nas bordas */
+
   cursor: pointer;
   transition: var(--transition);
 }
@@ -69,7 +73,8 @@
 .thumb img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+
+  object-fit: cover;  /* 🔥 faz a imagem ocupar tudo */
 }
 
 .thumb.active,
@@ -202,9 +207,6 @@
   color: #fff;
 }
 
-.btn-primary:hover {
-  filter: brightness(1.05);
-}
 
 .btn-outline {
   border: 1px solid rgba(255,255,255,0.08);
@@ -214,6 +216,38 @@
 
 .btn-outline:hover {
   border-color: rgba(255,255,255,0.18);
+}
+
+/* CARD ÚNICO */
+.product-details-box {
+  margin-top: 60px;
+  padding: 30px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* DESCRIÇÃO */
+.product-details__description h3 {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+}
+
+.product-details__description p {
+  color: rgba(255,255,255,0.72);
+  line-height: 1.7;
+  font-size: 0.95rem;
+  max-width: 1300px;
+}
+
+/* SPECS */
+.product-details__specs h3 {
+  font-size: 1.5rem;
+  margin-bottom: 24px;
 }
 
 /* SPECS */
@@ -263,6 +297,14 @@
   margin-bottom: 24px;
 }
 
+.product-card__content h3 {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: -10px;
+  min-height: 48px;
+}
+
+
 .related-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -276,20 +318,26 @@
   border: 1px solid rgba(255,255,255,0.06);
 }
 
-.related-card__image {
-  height: 230px;
-  background: #ffffff;
-  padding: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.product-card__image {
+  height: 310px;
+
+  padding: 0;
+  background: none;
+
+  overflow: hidden;
+
+  border-radius: 16px 16px 0 0; /* 🔥 só topo */
 }
 
-.related-card__image img {
+.product-card__image img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+
+  object-fit: cover;
+  object-position: center; 
+  display: block;
 }
+
 
 .related-card__content {
   padding: 22px;
@@ -357,3 +405,35 @@
     height: 78px;
   }
 }
+
+.product-card__benefits {
+  list-style: none;
+  padding: 0;
+  margin-top: 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+
+
+.product-info__old-price {
+  display: block;
+  text-decoration: line-through;
+  color: #777;
+  margin-bottom: 4px;
+}
+
+.product-info__badge {
+  display: inline-block;
+  margin-top: 6px;
+  margin-bottom: 10px;
+  padding: 4px 10px;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+

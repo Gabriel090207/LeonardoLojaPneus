@@ -60,6 +60,20 @@
   cursor: pointer;
 }
 
+
+.header__search {
+  transition: 0.25s ease;
+}
+
+.header__search:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(227, 6, 19, 0.2);
+}
+
+.header__search-input:focus {
+  outline: none;
+}
+
 .header__actions {
   display: flex;
   gap: 10px;
@@ -82,6 +96,11 @@
 .header__cart-button {
   background: var(--color-primary);
   border-color: var(--color-primary);
+    transition: 0.2s;
+}
+
+.header__cart-button:hover{
+  opacity: 0.9;
 }
 
 .header__bottom-container {
@@ -238,5 +257,216 @@
 
   .header__mobile {
     display: flex;
+  }
+}
+
+.headerAvatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+   border: 1px solid rgba(255,255,255,0.12);
+  background: transparent;
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: bold;
+}
+
+.mobile-avatar {
+  margin-top: auto; /* 🔥 empurra pra baixo igual botão */
+
+  width: 46px;
+  height: 46px;
+
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: bold;
+  font-size: 14px;
+
+  align-self: center; /* 🔥 centraliza */
+}
+
+
+/* DROPDOWN USER */
+.userDropdown {
+  position: absolute;
+  top: 40px;
+  right: 120px;
+
+  width: 190px;
+  background: #111;
+
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px;
+
+  padding: 8px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  z-index: 2000;
+
+
+}
+
+/* ITEM */
+.dropdownItem {
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 0 12px;
+
+  border-radius: 10px;
+  border: none;
+
+  background: transparent;
+  color: #fff;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.dropdownItem svg {
+  font-size: 16px;
+}
+
+/* HOVER */
+.dropdownItem:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+/* LOGOUT */
+.dropdownItem.logout {
+  color: #ff4d4d;
+}
+
+.dropdownItem.logout:hover {
+  background: rgba(255, 77, 77, 0.1);
+}
+
+/* ANIMAÇÃO */
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.headerAvatar {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.headerAvatar:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+
+/* =========================
+   MOBILE USER ACTIONS
+========================= */
+.mobile-user-actions {
+  margin-top: auto; /* 🔥 joga pro final igual login */
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* BOTÃO CONTA */
+.mobile-account-btn {
+  height: 46px;
+
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.12);
+
+  background: transparent;
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.mobile-account-btn:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+/* BOTÃO SAIR */
+.mobile-logout-btn {
+  height: 46px;
+
+  border-radius: 999px;
+  border: none;
+
+  background: rgba(255, 77, 77, 0.1);
+  color: #ff4d4d;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.mobile-logout-btn:hover {
+  background: rgba(255, 77, 77, 0.2);
+}
+
+
+/* ENTRADA */
+.userDropdown.open {
+  animation: dropdownIn 0.25s ease;
+}
+
+/* SAÍDA */
+.userDropdown.closing {
+  animation: dropdownOut 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* KEYFRAMES */
+@keyframes dropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dropdownOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-18px); /* 🔥 sobe suave */
   }
 }

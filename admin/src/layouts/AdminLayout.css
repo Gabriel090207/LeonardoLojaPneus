@@ -1,0 +1,30 @@
+.adminWrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* HEADER FIXO */
+.adminHeader {
+  flex-shrink: 0;
+}
+
+/* LAYOUT ABAIXO DO HEADER */
+.adminLayout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* SIDEBAR FIXA */
+.adminSidebar {
+  flex-shrink: 0;
+}
+
+/* 🔥 CONTEÚDO ROLÁVEL */
+.adminContent {
+  flex: 1;
+  padding: 50px 60px;
+  overflow-y: auto;
+}

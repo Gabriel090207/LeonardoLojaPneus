@@ -1,0 +1,153 @@
+.products {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* HEADER */
+.productsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.productsHeader h2 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* BOTÃO */
+.btnNew {
+  background: var(--color-primary);
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.btnNew:hover {
+  opacity: 0.9;
+}
+
+/* TABELA */
+.tableWrapper {
+  background: #111;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* HEADER */
+thead {
+  background: #0d0d0d;
+}
+
+th {
+  padding: 14px;
+  text-align: left;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+/* 🔥 CONTROLE DE COLUNAS */
+th:nth-child(1) { width: 190px; }   /* imagem */
+th:nth-child(3) { width: 100px; }  /* preço */
+th:nth-child(4) { width: 400px; text-align: center;}  /* estoque */
+th:last-child  { width: 180px; text-align: center; } /* ações */
+
+
+td:nth-child(4) {
+  text-align: center;
+}
+
+/* CORPO */
+td {
+  padding: 16px 14px;
+}
+
+tbody tr {
+  border-top: 1px solid var(--color-border);
+  transition: 0.2s;
+}
+
+tbody tr:hover {
+  background: #1a1a1a;
+}
+
+/* IMAGEM */
+.productImage {
+  width: 55px;
+  height: 55px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+}
+
+/* 🔥 AÇÕES */
+.actionsCell {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* BOTÕES */
+.btnEdit {
+  background: transparent;
+  border: 1px solid #444;
+  padding: 6px 10px;
+  border-radius: 6px;
+  color: #ccc;
+  cursor: pointer;
+  margin-right: 6px;
+  transition: 0.2s;
+}
+
+.btnEdit:hover {
+  border-color: #888;
+  color: #fff;
+}
+
+.btnDelete {
+  background: transparent;
+  border: 1px solid #ff1a1a;
+  padding: 6px 10px;
+  border-radius: 6px;
+  color: #ff1a1a;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btnDelete:hover {
+  background: #ff1a1a;
+  color: #fff;
+}
+
+
+
+.emptyRow td {
+  padding: 0;
+  height: 120px;
+}
+
+.emptyWrapper {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--color-text-muted);
+  font-size: 14px;
+
+  text-align: center;
+  white-space: nowrap;
+}

@@ -1,44 +1,199 @@
-import './ProductDetails.css'
-import { useState } from 'react'
+import "./ProductDetails.css";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+
 import {
   FiMinus,
   FiPlus,
-  FiCheck,
-  FiHeart
-} from 'react-icons/fi'
+  FiCheck
+} from "react-icons/fi";
 
-import productTire from '../../assets/product-tire.png'
+import { FaWhatsapp } from "react-icons/fa";
+
+import { auth, db } from "../../services/firebase";
+import {
+  collection,
+  query,
+  where,
+  onSnapshot,
+  doc,
+  setDoc,
+  getDoc
+} from "firebase/firestore";
+
+import toast from "react-hot-toast";
+import CustomToast from "../../components/CustomToast/CustomToast";
+
+
+import { useCartUI } from "../../context/CartUIContext";
 
 function ProductDetails() {
-  const images = [productTire, productTire, productTire, productTire]
+  const { slug } = useParams();
 
-  const [selectedImage, setSelectedImage] = useState(images[0])
-  const [qty, setQty] = useState(1)
+  const [product, setProduct] = useState<any>(null);
+  const [images, setImages] = useState<string[]>([]);
+  const [selectedImage, setSelectedImage] = useState("");
+  const [qty, setQty] = useState(1);
 
-  const increase = () => setQty((prev) => prev + 1)
+  const [offer, setOffer] = useState<any>(null);
+
+
+  const { openCart } = useCartUI();
+
+
+
+  const increase = () => setQty((prev) => prev + 1);
   const decrease = () =>
-    setQty((prev) => (prev > 1 ? prev - 1 : 1))
+    setQty((prev) => (prev > 1 ? prev - 1 : 1));
 
-  const related = [1, 2, 3]
+  // 🔥 FORMATAR PREÇO
+  const formatPrice = (price: number) => {
+    return Number(price).toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+  };
+
+  const getDiscount = () => {
+  if (!offer) return null;
+
+  const percent =
+    ((offer.oldPrice - offer.newPrice) / offer.oldPrice) * 100;
+
+  return Math.round(percent);
+};
+
+  // 🔥 PARCELAMENTO
+  const getInstallment = (price: number, max = 10) => {
+    if (!price) return "";
+
+    const value = price / max;
+
+    return `${max}x de ${value.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    })} sem juros`;
+  };
+
+  // 🔥 WHATSAPP
+  const handleWhats = () => {
+    const phone = "5567999999999"; // 🔥 TROCAR PELO SEU
+
+    const text = `Olá! Tenho interesse no produto: ${product?.name}`;
+
+    window.open(
+      `https://wa.me/${phone}?text=${encodeURIComponent(text)}`,
+      "_blank"
+    );
+  };
+
+  // 🔥 BUSCAR PRODUTO
+  useEffect(() => {
+  if (!slug) return;
+
+  const productQuery = query(
+    collection(db, "products"),
+    where("slug", "==", slug)
+  );
+
+  const unsubscribeProduct = onSnapshot(productQuery, (snap) => {
+    if (!snap.empty) {
+      const docData = snap.docs[0];
+      const data = docData.data();
+
+      setProduct(data);
+
+      const imgs = data.images || [];
+      setImages(imgs);
+      setSelectedImage(imgs[0]);
+
+      const productId = docData.id;
+
+      // 🔥 OFERTA REALTIME
+      const offerQuery = query(
+        collection(db, "offers"),
+        where("productId", "==", productId)
+      );
+
+      onSnapshot(offerQuery, (offerSnap) => {
+        if (!offerSnap.empty) {
+          setOffer(offerSnap.docs[0].data());
+        } else {
+          setOffer(null);
+        }
+      });
+    }
+  });
+
+  return () => unsubscribeProduct();
+}, [slug]);
+
+  if (!product) {
+
+
+    return (
+      <div className="accountLoading">
+        Carregando produto...
+      </div>
+    );
+  }
+
+      const finalPrice = offer ? offer.newPrice : product.price;
+
+
+const handleAddCart = async () => {
+  const user = auth.currentUser;
+
+  if (!user) {
+    toast.custom((t) => (
+      <CustomToast type="error" message="Faça login para adicionar" t={t} />
+    ));
+    return;
+  }
+
+  const ref = doc(db, "users", user.uid, "cart", product.slug)
+  const snap = await getDoc(ref);
+
+  if (snap.exists()) {
+    await setDoc(ref, {
+  productId: product.slug,
+  qty: snap.data().qty + qty,
+});
+  } else {
+    await setDoc(ref, {
+  productId: product.slug,
+  qty,
+});
+  }
+
+  toast.custom((t) => (
+    <CustomToast type="success" message="Item adicionado ao carrinho" t={t} />
+  ));
+
+  openCart(); 
+};
 
   return (
     <section className="product-details-page">
       <div className="container">
-        {/* TOPO */}
+
+        {/* HERO */}
         <div className="product-page__hero">
           <span className="page__badge">Produto</span>
 
           <h1>
-            Pneu <span className="text-red">195/55 R15</span>
+            {product.name}
           </h1>
         </div>
 
         {/* MAIN */}
         <div className="product-main">
+
           {/* GALLERY */}
           <div className="product-gallery">
+
             <div className="product-gallery__main">
-              <img src={selectedImage} alt="Pneu" />
+              <img src={selectedImage} alt={product.name} />
             </div>
 
             <div className="product-gallery__thumbs">
@@ -47,8 +202,8 @@ function ProductDetails() {
                   key={index}
                   className={
                     selectedImage === img
-                      ? 'thumb active'
-                      : 'thumb'
+                      ? "thumb active"
+                      : "thumb"
                   }
                   onClick={() => setSelectedImage(img)}
                 >
@@ -60,36 +215,42 @@ function ProductDetails() {
 
           {/* INFO */}
           <div className="product-info">
+
             <span className="product-info__measure">
-              195/55 R15
+              {product.medida}
             </span>
 
-            <h2>Pneu Aro 15 Performance</h2>
+            <h2>{product.name}</h2>
 
-            <span className="product-info__price">
-              R$ 499,90
-            </span>
+           {offer && (
+  <span className="product-info__old-price">
+    {formatPrice(offer.oldPrice)}
+  </span>
+)}
+
+<span className="product-info__price">
+  {formatPrice(finalPrice)}
+</span>
+
+{offer && (
+  <span className="product-info__badge">
+    {getDiscount()}% OFF
+  </span>
+)}
 
             <span className="product-info__installment">
-              10x de R$ 49,99 sem juros
+              {getInstallment(finalPrice)}
+              
             </span>
 
             <ul className="product-info__benefits">
-              <li>
-                <FiCheck />
-                Alta durabilidade
-              </li>
-
-              <li>
-                <FiCheck />
-                Garantia de 5 anos
-              </li>
-
-              <li>
-                <FiCheck />
-                Certificado Inmetro
-              </li>
-            </ul>
+  {product.highlights?.map((item: string, i: number) => (
+    <li key={i}>
+      <FiCheck />
+      {item}
+    </li>
+  ))}
+</ul>
 
             {/* QUANTITY */}
             <div className="product-qty">
@@ -110,71 +271,53 @@ function ProductDetails() {
 
             {/* ACTIONS */}
             <div className="product-actions">
-              <button className="btn-primary">
-                Comprar agora
+
+              <button className="btn-primary" onClick={handleAddCart}>
+  Comprar agora
+</button>
+
+              <button
+                className="btn-outline whatsapp-btn"
+                onClick={handleWhats}
+              >
+                <FaWhatsapp />
+                Falar no WhatsApp
               </button>
 
-              <button className="btn-outline">
-  <FiHeart />
-  Favoritar
-</button>
             </div>
+
           </div>
         </div>
 
-        {/* SPECS */}
-        <div className="product-specs">
-          <h3>Informações técnicas</h3>
+        {/* DESCRIÇÃO + SPECS */}
+        <div className="product-details-box">
 
-          <div className="product-specs__grid">
-            <div><span>Marca</span><strong>Prime Tires</strong></div>
-            <div><span>Medida</span><strong>195/55 R15</strong></div>
-            <div><span>Aro</span><strong>15</strong></div>
-            <div><span>Garantia</span><strong>5 anos</strong></div>
-            <div><span>Uso</span><strong>Urbano / Rodovia</strong></div>
-            <div><span>Certificação</span><strong>Inmetro</strong></div>
+          <div className="product-details__description">
+            <h3>Descrição do produto</h3>
+
+            <p>{product.description}</p>
           </div>
+
+          <div className="product-details__specs">
+
+            <h3>Informações técnicas</h3>
+
+            <div className="product-specs__grid">
+              <div><span>Marca</span><strong>{product.brand}</strong></div>
+              <div><span>Medida</span><strong>{product.medida}</strong></div>
+              <div><span>Aro</span><strong>{product.aro}</strong></div>
+              <div><span>Garantia</span><strong>{product.garantia}</strong></div>
+              <div><span>Uso</span><strong>{product.uso}</strong></div>
+              <div><span>Certificação</span><strong>{product.certificacao}</strong></div>
+            </div>
+
+          </div>
+
         </div>
 
-        {/* RELATED */}
-        <div className="related-products">
-          <h3>Produtos relacionados</h3>
-
-          <div className="related-grid">
-            {related.map((item) => (
-              <div className="product-card" key={item}>
-  <div className="product-card__image">
-    <img src={productTire} alt="Produto" />
-  </div>
-
-  <div className="product-card__content">
-    <h3>Pneu Aro 15 Performance</h3>
-
-    <ul className="product-card__benefits">
-      <li>Alta durabilidade</li>
-      <li>Garantia de 5 anos</li>
-      <li>Certificado Inmetro</li>
-    </ul>
-
-    <span className="product-card__price">
-      R$ 499,90
-    </span>
-
-    <span className="product-card__installment">
-      10x de R$ 49,99 sem juros
-    </span>
-
-    <button className="product-card__button">
-      Ver detalhes
-    </button>
-  </div>
-</div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default ProductDetails
+export default ProductDetails;

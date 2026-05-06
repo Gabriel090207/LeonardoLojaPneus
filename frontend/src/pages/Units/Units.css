@@ -1,6 +1,6 @@
 .units-page {
   padding: 175px 0 90px;
-  background: #0b0b0b;
+ background: #111;
 }
 
 /* TOPO */
@@ -105,9 +105,9 @@
   flex-wrap: wrap;
 }
 
-.btn-primary,
-.btn-outline {
-  height: 46px;
+.btn-primary1,
+.btn-outline1 {
+  height: 40px;
   padding: 0 22px;
   border-radius: 999px;
   font-size: 0.92rem;
@@ -121,24 +121,40 @@
   transition: var(--transition);
 }
 
-.btn-primary {
+.btn-primary1 {
+ 
   background: var(--color-primary);
   color: #fff;
   border: none;
 }
 
-.btn-primary:hover {
-  filter: brightness(1.05);
+.btn-primary1 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
-.btn-outline {
+.btn-primary1 svg {
+  font-size: 16px;
+}
+
+.btn-primary1:hover {
+  opacity: 0.9;
+}
+
+.btn-outline1 {
   background: rgba(255,255,255,0.03);
   color: #fff;
   border: 1px solid rgba(255,255,255,0.08);
 }
 
-.btn-outline:hover {
+.btn-outline1:hover {
   border-color: rgba(255,255,255,0.18);
+}
+
+.btn-outline1 {
+  cursor: pointer;
 }
 
 /* RESPONSIVO */

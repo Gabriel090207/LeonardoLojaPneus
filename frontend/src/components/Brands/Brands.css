@@ -1,14 +1,21 @@
 .brands {
   padding: 125px 0;
   
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: visible;
 }
 
 .brands__marquee {
   width: 100%;
-  overflow: hidden;
+
+  overflow-x: hidden;
+  overflow-y: visible;
+
   margin-top: 48px;
+
   position: relative;
+
+  padding-top: 10px;
 }
 
 .brands__track {
@@ -33,8 +40,10 @@
   transition: var(--transition);
 }
 
+
 .brands__item:hover {
-  transform: translateY(-4px);
+  transform: translateY(-4px) scale(1.02);
+
   border-color: rgba(255, 255, 255, 0.14);
 }
 

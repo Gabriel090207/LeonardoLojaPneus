@@ -99,6 +99,11 @@
 .hero__primary-button {
   background-color: var(--color-primary);
   color: #ffffff;
+  transition: 0.2s;
+}
+
+.hero__primary-button:hover{
+  opacity: 0.9;
 }
 
 .hero__secondary-button {

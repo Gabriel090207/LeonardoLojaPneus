@@ -1,6 +1,6 @@
 .services-page {
   padding: 175px 0 90px;
-  background: #0b0b0b;
+ background: #111;
 }
 
 /* TOPO PADRÃO */
@@ -82,18 +82,28 @@
 .service-card__button {
   width: 100%;
   height: 44px;
+
   border: none;
   border-radius: 999px;
+
   background: var(--color-primary);
   color: #ffffff;
+
   font-size: 0.92rem;
   font-weight: 600;
+
   cursor: pointer;
   transition: var(--transition);
+
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .service-card__button:hover {
-  filter: brightness(1.05);
+  opacity: 0.9;
 }
 
 /* CTA FINAL */
@@ -141,7 +151,7 @@
 }
 
 .services-page__cta-button:hover {
-  filter: brightness(1.05);
+  opacity: 0.9;
 }
 
 /* RESPONSIVO */

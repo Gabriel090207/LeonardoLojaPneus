@@ -1,0 +1,117 @@
+.orders {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* HEADER */
+.ordersHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* AÇÕES DIREITA */
+.ordersActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* INPUT BUSCA */
+.searchInput {
+  height: 36px;
+  padding: 0 12px;
+
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+
+  background: #0d0d0d;
+  color: #fff;
+
+  outline: none;
+  transition: 0.2s;
+}
+
+.searchInput:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+/* WRAPPER */
+.searchWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* ÍCONE */
+.searchIcon {
+  position: absolute;
+  left: 10px;
+  font-size: 16px;
+  color: #777;
+  
+}
+
+/* INPUT */
+.searchInput {
+  height: 36px;
+  width: 200px;
+
+  padding: 0 12px 0 34px; /* 🔥 espaço pro ícone */
+
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+
+  background: #0d0d0d;
+  color: #fff;
+
+  outline: none;
+  transition: 0.2s;
+}
+
+/* FOCUS */
+.searchInput:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+/* 🔥 ÍCONE MUDA JUNTO (TOP UX) */
+.searchWrapper:focus-within .searchIcon {
+  color: var(--color-primary);
+}
+
+/* AJUSTE SELECT (mesmo padrão) */
+.ordersActions .selectInput {
+  height: 36px;
+  padding: 0 34px 0 10px;
+}
+
+.ordersHeader h2 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* STATUS */
+.status {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.status.pendente {
+  background: #444;
+  color: #fff;
+}
+
+.status.pago {
+  background: #1a8f3c;
+  color: #fff;
+}
+
+
+.orders .btnEdit {
+  margin: 0 auto;          /* 🔥 centraliza */
+  display: block;          /* necessário pro margin funcionar */
+}

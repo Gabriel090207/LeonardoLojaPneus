@@ -62,12 +62,11 @@
   align-items: center;
   gap: 10px;
   text-decoration: none;
-  transition: var(--transition);
+  transition: 0.2s;
 }
 
 .units-cta__button:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.08);
+  opacity: 0.9;
 }
 
 @media (max-width: 768px) {

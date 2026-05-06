@@ -1,0 +1,52 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* TÍTULO */
+.sectionTitle {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* CARDS */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #111;
+  padding: 20px;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-primary);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+}
+
+.card h3 {
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+.card p {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+/* GRÁFICO */
+.chartBox {
+  background: #111;
+  padding: 20px; /* aumenta aqui */
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+}

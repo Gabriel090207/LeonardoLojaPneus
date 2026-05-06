@@ -55,6 +55,16 @@ function ServicesPage() {
     },
   ]
 
+  const whatsappNumber = "556730143800";
+
+const getWhatsLink = (service: string) => {
+  const message = `Olá! Tenho interesse no serviço de ${service}.`;
+
+  return `https://api.whatsapp.com/send/?phone=${whatsappNumber}&text=${encodeURIComponent(
+    message
+  )}`;
+};
+
   return (
     <section className="services-page">
       <div className="container">
@@ -78,9 +88,15 @@ function ServicesPage() {
 
               <p>{item.text}</p>
 
-              <button className="service-card__button">
-                Contratar agora
-              </button>
+              <a
+  href={getWhatsLink(item.title)}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label={`Contratar serviço de ${item.title} pelo WhatsApp`}
+  className="service-card__button"
+>
+  Contratar agora
+</a>
             </article>
           ))}
         </div>

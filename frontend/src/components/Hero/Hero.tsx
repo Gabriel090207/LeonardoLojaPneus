@@ -1,8 +1,12 @@
 import './Hero.css'
 import heroBanner from '../../assets/hero-banner.png'
 import { FiShield, FiCreditCard, FiCheckCircle } from 'react-icons/fi'
+import { useNavigate } from 'react-router-dom'
 
 function Hero() {
+
+  const navigate = useNavigate();
+
   return (
     <section className="hero">
       <img
@@ -29,13 +33,19 @@ function Hero() {
           </p>
 
           <div className="hero__actions">
-            <button className="hero__primary-button">
-              Comprar agora
-            </button>
+            <button
+  className="hero__primary-button"
+  onClick={() => navigate("/pneus")}
+>
+  Comprar agora
+</button>
 
-            <button className="hero__secondary-button">
-              Ver ofertas
-            </button>
+           <button
+  className="hero__secondary-button"
+  onClick={() => navigate("/ofertas")}
+>
+  Ver ofertas
+</button>
           </div>
 
           <div className="hero__infos">
