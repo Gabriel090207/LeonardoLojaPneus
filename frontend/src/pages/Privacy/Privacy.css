@@ -1,12 +1,13 @@
 .privacy-page {
   padding: 175px 0 90px;
-  background: #111;
+  background: #fff
 }
 
 /* HERO */
 .privacy-page__hero {
   max-width: 960px;
   margin-bottom: 42px;
+
 }
 
 .page__badge {
@@ -20,11 +21,12 @@
 .privacy-page__hero h1 {
   font-size: 3rem;
   line-height: 1.1;
+  color: #000;
 }
 
 .privacy-page__hero p {
   margin-top: 16px;
-  color: rgba(255,255,255,0.72);
+  color: #555;
   line-height: 1.7;
   max-width: 1250px;
 }
@@ -38,8 +40,9 @@
 
 /* CARD */
 .privacy-card {
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.06);
+   background: #fafafa;
+
+  border: 1px solid rgba(0,0,0,0.06);
   border-radius: 20px;
   padding: 26px;
 
@@ -48,7 +51,7 @@
 
 .privacy-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(227,6,19,0.28);
+ 
 }
 
 .privacy-card span {
@@ -62,10 +65,11 @@
 .privacy-card h3 {
   font-size: 1.3rem;
   margin-bottom: 12px;
+  color: #111;
 }
 
 .privacy-card p {
-  color: rgba(255,255,255,0.72);
+  color: #555;
   line-height: 1.75;
   margin-bottom: 10px;
 }

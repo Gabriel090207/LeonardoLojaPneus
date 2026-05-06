@@ -126,9 +126,10 @@
   height: 46px;
   padding: 0 24px;
   border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.08);
-  background: rgba(255,255,255,0.03);
-  color: #ffffff;
+  background: #ffffff;
+
+  color: #111;
+   border: 1px solid rgba(0,0,0,0.08);
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
@@ -137,7 +138,9 @@
 
 
 .featured-products__more-button:hover {
-  background-color: rgba(255, 255, 255, 0.12);
+  background: #f7f7f7;
+
+  border-color: rgba(0,0,0,0.14);
 }
 
 @media (max-width: 1100px) {

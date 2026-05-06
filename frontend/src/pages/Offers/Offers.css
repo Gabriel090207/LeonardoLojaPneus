@@ -1,6 +1,6 @@
 .offers-page {
   padding: 175px 0 90px;
-  background: #111;
+  background: #ffffff;
 }
 
 /* HERO */
@@ -70,8 +70,8 @@
 /* CARD */
 .offer-card {
   position: relative;
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.06);
+  background: #fafafa;
+  border: 1px solid rgba(0,0,0,0.06);
   border-radius: 18px;
   overflow: hidden;
   transition: var(--transition);
@@ -79,7 +79,7 @@
 
 .offer-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(227,6,19,0.28);
+ 
 }
 
 .offer-card__badge {
@@ -129,6 +129,7 @@
   line-height: 1.5;
   margin-bottom: -10px;
   min-height: 48px;
+  color: #000;
 }
 
 .offer-card__benefits {
@@ -158,9 +159,10 @@
 }
 
 .offer-card__old-price {
+
   display: block;
   font-size: 0.95rem;
-  color: rgba(255,255,255,0.45);
+  color: #555;
   text-decoration: line-through;
   margin-bottom: 4px;
 }
@@ -169,7 +171,7 @@
   display: block;
   font-size: 1.45rem;
   font-weight: 800;
-  color: #ffffff;
+  color: #000;
   margin-bottom: 6px;
 }
 

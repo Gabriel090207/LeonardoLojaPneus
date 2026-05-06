@@ -22,7 +22,7 @@
 .footer__brand p {
   margin-top: 18px;
   max-width: 340px;
-  color: var(--color-text-muted);
+  color: #bdbdbd;
   line-height: 1.8;
   font-size: 0.96rem;
 }
@@ -36,7 +36,7 @@
 .footer__column a {
   display: block;
   text-decoration: none;
-  color: var(--color-text-muted);
+  color: #bdbdbd;
   margin-bottom: 12px;
   transition: var(--transition);
 }
@@ -50,7 +50,7 @@
   align-items: flex-start;
   gap: 12px;
   margin-bottom: 16px;
-  color: var(--color-text-muted);
+  color: #bdbdbd;
   line-height: 1.7;
 }
 
@@ -83,7 +83,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  color: var(--color-text-muted);
+  color: #bdbdbd;
 }
 
 .footer__payment-item svg {

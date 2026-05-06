@@ -6,8 +6,9 @@ import {
   FiClock,
   FiInstagram,
   FiFacebook,
-  FiMessageCircle,
 } from 'react-icons/fi'
+
+import { FaWhatsapp } from 'react-icons/fa'
 
 function Contact() {
   return (
@@ -55,7 +56,7 @@ function Contact() {
               </div>
 
               <div className="contact-info__item">
-                <FiMessageCircle />
+                <FaWhatsapp />
                 <span>(67) 9 9686-5264</span>
               </div>
 
@@ -93,7 +94,7 @@ function Contact() {
               </a>
 
               <a href="#">
-                <FiMessageCircle />
+                <FaWhatsapp />
               </a>
             </div>
           </div>

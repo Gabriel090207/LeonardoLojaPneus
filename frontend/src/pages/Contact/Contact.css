@@ -1,6 +1,6 @@
 .contact-page {
   padding: 175px 0 90px;
-  background: #0b0b0b;
+  background: #fff;
 }
 
 /* TOPO PADRÃO */
@@ -22,6 +22,7 @@
   font-size: 3rem;
   line-height: 1.1;
   margin: 0;
+  color: #000;
 }
 
 /* LAYOUT */
@@ -40,14 +41,16 @@
 .contact-info {
   padding: 28px;
   border-radius: 20px;
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.06);
+  background: #fafafa;
+
+  border: 1px solid rgba(0,0,0,0.06);
 }
 
 .contact-form h2,
 .contact-info h2 {
   font-size: 1.35rem;
   margin-bottom: 22px;
+  color: #000;
 }
 
 .contact-form__grid {
@@ -59,9 +62,9 @@
 .contact-form input,
 .contact-form textarea {
   width: 100%;
-  border: 1px solid rgba(255,255,255,0.08);
-  background: #141414;
-  color: #fff;
+  background: #ffffff;
+color: #111;
+border: 1px solid rgba(0,0,0,0.08);
   border-radius: 14px;
   padding: 0 16px;
   margin-bottom: 14px;
@@ -80,7 +83,7 @@
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: none;
-  border-color: rgba(227,6,19,0.35);
+  border-color: var(--color-primary);
 }
 
 .contact-form__button {
@@ -111,7 +114,7 @@
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  color: rgba(255,255,255,0.75);
+  color: #555;
   line-height: 1.7;
   font-size: 0.95rem;
 }
@@ -132,10 +135,15 @@
 .contact-social a {
   width: 44px;
   height: 44px;
+
   border-radius: 50%;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.06);
-  color: #fff;
+
+  background: #ffffff;
+
+  border: 1px solid rgba(0,0,0,0.06);
+
+  color: #111;
+
   text-decoration: none;
 
   display: flex;
@@ -143,6 +151,8 @@
   justify-content: center;
 
   transition: var(--transition);
+
+  box-shadow: 0 4px 18px rgba(0,0,0,0.03);
 }
 
 .contact-social a svg {
@@ -152,7 +162,10 @@
 
 .contact-social a:hover {
   transform: translateY(-3px);
-  border-color: rgba(227,6,19,0.28);
+
+  border-color: rgba(227,6,19,0.22);
+
+  background: #fafafa;
 }
 
 /* RESPONSIVO */

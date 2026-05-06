@@ -44,7 +44,7 @@
 .brands__item:hover {
   transform: translateY(-4px) scale(1.02);
 
-  border-color: rgba(255, 255, 255, 0.14);
+
 }
 
 .brands__item img {
@@ -76,21 +76,25 @@
 
 .brands__marquee::before {
   left: 0;
+
   background: linear-gradient(
     90deg,
-    #101010 0%,
-    rgba(16, 16, 16, 0.95) 30%,
-    rgba(16, 16, 16, 0) 100%
+    #e7e7e7 0%,
+    rgba(231, 231, 231, 0.72) 18%,
+    rgba(231, 231, 231, 0.28) 42%,
+    rgba(231, 231, 231, 0) 100%
   );
 }
 
 .brands__marquee::after {
   right: 0;
+
   background: linear-gradient(
     270deg,
-    #101010 0%,
-    rgba(16, 16, 16, 0.95) 30%,
-    rgba(16, 16, 16, 0) 100%
+    #e7e7e7 0%,
+    rgba(231, 231, 231, 0.72) 18%,
+    rgba(231, 231, 231, 0.28) 42%,
+    rgba(231, 231, 231, 0) 100%
   );
 }
 

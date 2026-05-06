@@ -1,6 +1,6 @@
 .units-page {
   padding: 175px 0 90px;
- background: #111;
+ background: #fff;
 }
 
 /* TOPO */
@@ -22,6 +22,7 @@
   font-size: 3rem;
   line-height: 1.1;
   margin: 0;
+  color: #000;
 }
 
 /* LISTA */
@@ -39,15 +40,16 @@
   overflow: hidden;
 
   border-radius: 22px;
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.06);
+   background: #fafafa;
+
+  border: 1px solid rgba(0,0,0,0.06);
 
   transition: var(--transition);
 }
 
 .unit-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(227,6,19,0.28);
+
 }
 
 .unit-card__image {
@@ -71,6 +73,7 @@
 .unit-card__content h3 {
   font-size: 1.45rem;
   margin-bottom: 18px;
+  color: #000;
 }
 
 /* INFO */
@@ -79,6 +82,7 @@
   flex-direction: column;
   gap: 14px;
   margin-bottom: 26px;
+  color: var(--color-text-muted);
 }
 
 .unit-card__info span {
@@ -86,7 +90,7 @@
   align-items: flex-start;
   gap: 10px;
 
-  color: rgba(255,255,255,0.75);
+  color: #555;
   line-height: 1.7;
   font-size: 0.95rem;
 }
@@ -144,13 +148,19 @@
 }
 
 .btn-outline1 {
-  background: rgba(255,255,255,0.03);
-  color: #fff;
-  border: 1px solid rgba(255,255,255,0.08);
+  background: #ffffff;
+
+  color: #111;
+
+  border: 1px solid rgba(0,0,0,0.08);
+
+  transition: var(--transition);
 }
 
 .btn-outline1:hover {
-  border-color: rgba(255,255,255,0.18);
+  background: #f7f7f7;
+
+  border-color: rgba(0,0,0,0.14);
 }
 
 .btn-outline1 {
