@@ -19,7 +19,7 @@
 
 .product-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(255,255,255,0.12);
+
 }
 
 .product-card__image {
@@ -82,7 +82,7 @@
   display: block;
   font-size: 1.35rem;
   font-weight: 800;
-  color: #ffffff;
+  color: #000000;
   margin-bottom: 6px;
 }
 

@@ -1,6 +1,6 @@
 .benefits {
   padding: 125px 0;
-  background: linear-gradient(180deg, #141414 0%, #1b1b1b 100%);
+  background: #f0f0f0;
 }
 
 .benefits__grid {
@@ -29,6 +29,7 @@
 }
 
 .benefits__card h3 {
+  color: #000;
   font-size: 1.25rem;
   margin-bottom: 12px;
 }

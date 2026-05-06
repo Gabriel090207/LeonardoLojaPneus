@@ -1,6 +1,6 @@
 .units-cta {
   padding: 95px 0;
-   background: linear-gradient(180deg, #141414 0%, #1b1b1b 100%);
+  background: #f0f0f0;
 }
 
 .units-cta__box {
@@ -9,8 +9,8 @@
   padding: 60px 40px;
   border-radius: 24px;
   text-align: center;
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.06);
+  background: #fafafa;
+  border: 1px solid rgba(0,0,0,0.06);
 }
 
 .units-cta__icon {
@@ -40,6 +40,7 @@
 .units-cta h2 {
   font-size: 2.4rem;
   margin-bottom: 16px;
+  color: #000;
 }
 
 .units-cta p {
