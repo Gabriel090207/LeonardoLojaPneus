@@ -1,7 +1,7 @@
 .checkout {
   padding-top: 170px;
   min-height: 98vh;
-  background: #111;
+  background: #fff;
 }
 
 .checkoutContainer {
@@ -13,19 +13,21 @@
 .checkout h2 {
   font-size: 28px;
   margin-bottom: 20px;
+  color: #000;
 }
 
 /* CARD */
 .checkoutCard {
   padding: 24px;
-  background: #111;
+  
   border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.06);
+
 }
 
 /* TITULO */
 .checkoutCard h3 {
   margin-bottom: 16px;
+  color: #111;
 }
 
 /* SWITCH */
@@ -40,10 +42,10 @@
   height: 48px;
 
   border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.1);
+   border: 1px solid rgba(0,0,0,0.08);
 
-  background: transparent;
-  color: #fff;
+  background: #fff;
+  color: #111;
 
   cursor: pointer;
   transition: 0.2s;
@@ -52,13 +54,17 @@
 .addressOptions button.active {
   background: var(--color-primary);
   border-color: var(--color-primary);
+  color: #fff;
 }
+
+
 
 /* FORM */
 .addressForm {
   display: flex;
   flex-direction: column;
   gap: 14px;
+
 }
 
 /* INPUT */
@@ -67,10 +73,10 @@
   padding: 0 14px;
 
   border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.08);
+ border: 1px solid rgba(0,0,0,0.08);
 
-  background: #0d0d0d;
-  color: #fff;
+  background: #fff;
+  color: #555;
 
   outline: none;
   transition: 0.2s;
@@ -150,10 +156,12 @@
    CARD PADRÃO
 ========================= */
 .checkoutCard {
-  background: #0d0d0d;
+  background: #fafafa;
+
+  border: 1px solid rgba(0,0,0,0.06);
   padding: 22px;
   border-radius: 16px;
-  border: 1px solid rgba(255,255,255,0.06);
+ 
 
   display: flex;
   flex-direction: column;
@@ -163,9 +171,6 @@
 }
 
 /* HOVER SUAVE */
-.checkoutCard:hover {
-  border-color: rgba(255,255,255,0.12);
-}
 
 /* TITULOS */
 .checkoutCard h3 {
@@ -221,26 +226,29 @@
   border-radius: 10px;
 
   background: #111;
+
 }
 
 /* TEXTO */
 .itemLeft p {
   font-size: 14px;
   font-weight: 500;
+  color: #111;
 }
 
 .itemLeft span {
   font-size: 13px;
-  color: #aaa;
+  color: #555;
 }
 
 
 .summaryItem span {
-  color: #aaa;
+  color: #555;
 }
 
 .summaryItem strong {
   font-weight: 600;
+    color: #111;
 }
 
 /* TOTAL FIXO EMBAIXO */
@@ -248,18 +256,19 @@
   margin-top: auto;
 
   padding-top: 14px;
-  border-top: 1px solid rgba(255,255,255,0.08);
+  border-top:  1px solid rgba(0,0,0,0.06);
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   font-size: 18px;
+    color: #111;
 }
 
 .summaryTotal strong {
   font-size: 22px;
-  color: #fff;
+  color: #111;
 }
 
 /* =========================
@@ -267,7 +276,7 @@
 ========================= */
 
 .userInfo {
-  background: #111;
+  background: #fff;
   padding: 14px;
   border-radius: 12px;
 
@@ -275,7 +284,7 @@
   flex-direction: column;
   gap: 6px;
 
-  color: #aaa;
+  color: #555;
   line-height: 1.4;
 }
 
@@ -293,10 +302,10 @@
   height: 46px;
 
   border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(0,0,0,0.08);
 
-  background: transparent;
-  color: #fff;
+  background: #fff;
+  color: #111;
 
   font-weight: 500;
   cursor: pointer;
@@ -312,12 +321,13 @@
 .paymentOptions button.active {
   background: var(--color-primary);
   border-color: var(--color-primary);
+  color: #fff;
 }
 
 /* PIX TEXTO */
 .pixBox {
   font-size: 14px;
-  color: #aaa;
+  color: #555;
   margin-top: 4px;
 }
 
@@ -340,17 +350,19 @@
   padding: 0 24px;
 
   border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(0,0,0,0.08);
 
-  background: transparent;
-  color: #fff;
+  background: #fff;
+  color: #111;
 
   cursor: pointer;
   transition: 0.2s;
 }
 
 .backBtn:hover {
-  border-color: #fff;
+  background: #f7f7f7;
+
+  border-color: rgba(0,0,0,0.14);
 }
 
 /* CONFIRMAR */
@@ -426,10 +438,7 @@
   height: 38px;
 
   border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.1);
-
-  background: transparent;
-  color: #fff;
+ 
 
   font-weight: 500;
   cursor: pointer;
@@ -467,10 +476,9 @@
   padding: 0 12px;
 
   border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.08);
-
-  background: #111;
-  color: #fff;
+  background: #ffffff;
+color: #111;
+border: 1px solid rgba(0,0,0,0.08);
 
   outline: none; /* remove padrão */
   transition: 0.2s;
