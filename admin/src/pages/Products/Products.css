@@ -14,6 +14,7 @@
 .productsHeader h2 {
   font-size: 20px;
   font-weight: 600;
+  color: #000;
 }
 
 /* BOTÃO */
@@ -22,7 +23,7 @@
   border: none;
   padding: 10px 18px;
   border-radius: 8px;
-  color: #fff;
+  color: #fafafa;
   cursor: pointer;
   font-weight: 500;
   transition: 0.3s;
@@ -34,8 +35,8 @@
 
 /* TABELA */
 .tableWrapper {
-  background: #111;
-  border: 1px solid var(--color-border);
+ background: #fff;
+   border: 1px solid rgba(0,0,0,0.06);
   border-radius: var(--radius);
   overflow: hidden;
 }
@@ -47,14 +48,15 @@ table {
 
 /* HEADER */
 thead {
-  background: #0d0d0d;
+  background: #fff;
+  
 }
 
 th {
   padding: 14px;
   text-align: left;
   font-size: 13px;
-  color: var(--color-text-muted);
+  color: #555;
 }
 
 /* 🔥 CONTROLE DE COLUNAS */
@@ -74,12 +76,13 @@ td {
 }
 
 tbody tr {
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid rgba(0,0,0,0.06);
   transition: 0.2s;
+  color: #111;
 }
 
 tbody tr:hover {
-  background: #1a1a1a;
+  background: #f4f4f4;
 }
 
 /* IMAGEM */
@@ -100,19 +103,22 @@ tbody tr:hover {
 
 /* BOTÕES */
 .btnEdit {
-  background: transparent;
-  border: 1px solid #444;
+  
   padding: 6px 10px;
   border-radius: 6px;
-  color: #ccc;
+  border: 1px solid rgba(0,0,0,0.08);
+
+  background: #fff;
+  color: #111;
   cursor: pointer;
   margin-right: 6px;
   transition: 0.2s;
 }
 
 .btnEdit:hover {
-  border-color: #888;
-  color: #fff;
+    background: #f7f7f7;
+
+  border-color: rgba(0,0,0,0.14);
 }
 
 .btnDelete {
@@ -150,4 +156,64 @@ tbody tr:hover {
 
   text-align: center;
   white-space: nowrap;
+}
+
+/* RESPONSIVIDADE PRODUTOS */
+@media (max-width: 900px) {
+  .productsHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .tableWrapper {
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 750px;
+  }
+}
+
+@media (max-width: 768px) {
+  .products {
+    gap: 16px;
+  }
+
+  .productsHeader h2 {
+    font-size: 18px;
+  }
+
+  .btnNew {
+    width: 100%;
+    padding: 12px;
+  }
+
+  th,
+  td {
+    padding: 12px 10px;
+  }
+
+  .productImage {
+    width: 45px;
+    height: 45px;
+  }
+
+  .btnEdit,
+  .btnDelete {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .productsHeader h2 {
+    font-size: 16px;
+  }
+
+  .emptyWrapper {
+    font-size: 13px;
+    padding: 20px;
+    white-space: normal;
+  }
 }

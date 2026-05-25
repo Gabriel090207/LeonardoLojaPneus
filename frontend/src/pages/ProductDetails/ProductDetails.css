@@ -1,6 +1,6 @@
 .product-details-page {
   padding: 175px 0 90px;
-  background: #111;
+  background: #fff;
 }
 
 /* TOPO PADRÃO */
@@ -22,6 +22,7 @@
   font-size: 3rem;
   line-height: 1.1;
   margin: 0;
+  color: #000;
 }
 
 /* MAIN */
@@ -30,6 +31,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 34px;
   align-items: start;
+  
 }
 
 /* GALLERY */
@@ -55,12 +57,14 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 14px;
   margin-top: 16px;
+  
 }
 
 .thumb {
   height: 96px;
   border-radius: 16px;
   border: 1px solid rgba(255,255,255,0.06);
+  
 
   background: none;   /* 🔥 remove o fundo branco */
   padding: 0;         /* 🔥 remove espaço interno */
@@ -86,8 +90,9 @@
 .product-info {
   padding: 30px;
   border-radius: 22px;
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.06);
+  background: #fafafa;
+
+  border: 1px solid rgba(0,0,0,0.06);
 }
 
 .product-info__measure {
@@ -101,6 +106,7 @@
   font-size: 2rem;
   line-height: 1.2;
   margin-bottom: 18px;
+  color: #000;
 }
 
 .product-info__price {
@@ -108,11 +114,13 @@
   font-size: 2rem;
   font-weight: 800;
   margin-bottom: 6px;
+  color: #111;
+  
 }
 
 .product-info__installment {
   display: block;
-  color: rgba(255,255,255,0.68);
+  color: #555;
   margin-bottom: 24px;
 }
 
@@ -130,7 +138,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  color: rgba(255,255,255,0.78);
+  color: var(--color-text-muted);
 }
 
 .product-info__benefits svg {
@@ -145,15 +153,16 @@
 .product-qty span {
   display: block;
   margin-bottom: 10px;
-  color: rgba(255,255,255,0.72);
+  color: #555;
 }
 
 .qty-box {
   width: 150px;
   height: 48px;
   border-radius: 999px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
+   background: #ffffff;
+color: #111;
+border: 1px solid rgba(0,0,0,0.08);
 
   display: flex;
   align-items: center;
@@ -167,7 +176,7 @@
   border: none;
   border-radius: 50%;
   background: transparent;
-  color: #fff;
+  color: #000000;
   cursor: pointer;
 
   display: flex;
@@ -209,13 +218,15 @@
 
 
 .btn-outline {
-  border: 1px solid rgba(255,255,255,0.08);
-  background: rgba(255,255,255,0.03);
-  color: #fff;
+   background: #ffffff;
+color: #111;
+border: 1px solid rgba(0,0,0,0.08);
 }
 
 .btn-outline:hover {
-  border-color: rgba(255,255,255,0.18);
+  background: #f7f7f7;
+
+  border-color: rgba(0,0,0,0.14);
 }
 
 /* CARD ÚNICO */
@@ -223,8 +234,8 @@
   margin-top: 60px;
   padding: 30px;
   border-radius: 22px;
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.06);
+    background: #fafafa;
+border: 1px solid rgba(0,0,0,0.06);
 
   display: flex;
   flex-direction: column;
@@ -235,10 +246,11 @@
 .product-details__description h3 {
   font-size: 1.5rem;
   margin-bottom: 16px;
+   color: #111;
 }
 
 .product-details__description p {
-  color: rgba(255,255,255,0.72);
+  color: #555;
   line-height: 1.7;
   font-size: 0.95rem;
   max-width: 1300px;
@@ -248,6 +260,7 @@
 .product-details__specs h3 {
   font-size: 1.5rem;
   margin-bottom: 24px;
+  color: #111;
 }
 
 /* SPECS */
@@ -255,8 +268,8 @@
   margin-top: 60px;
   padding: 30px;
   border-radius: 22px;
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.06);
+
+  
 }
 
 .product-specs h3 {
@@ -273,18 +286,19 @@
 .product-specs__grid div {
   padding: 18px;
   border-radius: 16px;
-  background: rgba(255,255,255,0.02);
+  background: #fff;
 }
 
 .product-specs__grid span {
   display: block;
   font-size: 0.85rem;
-  color: rgba(255,255,255,0.55);
+  color: #555;
   margin-bottom: 6px;
 }
 
 .product-specs__grid strong {
   font-size: 1rem;
+  color: var(--color-text-muted)
 }
 
 /* RELATED */

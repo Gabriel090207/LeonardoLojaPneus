@@ -1,59 +1,61 @@
 import './ServicesPage.css'
 import {
-  FiCompass,
-  FiTarget,
+  FiCrosshair,
+  FiActivity,
+  FiTool,
   FiDisc,
-  FiSettings,
   FiDroplet,
   FiBatteryCharging,
-  FiTool,
-  FiShield,
+  FiCircle,
+  FiCommand,
   FiMapPin,
 } from 'react-icons/fi'
 
 function ServicesPage() {
+
   const services = [
-    {
-      icon: <FiCompass />,
-      title: 'Alinhamento 3D',
-      text: 'Tecnologia de ponta para estabilidade, direção precisa e menor desgaste dos pneus.',
-    },
-    {
-      icon: <FiTarget />,
-      title: 'Balanceamento',
-      text: 'Elimine vibrações e aumente o conforto com ajuste ideal das rodas.',
-    },
-    {
-      icon: <FiDisc />,
-      title: 'Freios',
-      text: 'Revisão completa, troca de componentes e máxima segurança na frenagem.',
-    },
-    {
-      icon: <FiSettings />,
-      title: 'Suspensão',
-      text: 'Diagnóstico e manutenção para mais estabilidade e conforto ao dirigir.',
-    },
-    {
-      icon: <FiDroplet />,
-      title: 'Troca de óleo',
-      text: 'Lubrificantes premium para proteger o motor e melhorar performance.',
-    },
-    {
-      icon: <FiBatteryCharging />,
-      title: 'Bateria',
-      text: 'Baterias novas com garantia e instalação rápida na unidade.',
-    },
-    {
-      icon: <FiTool />,
-      title: 'Caixa de direção',
-      text: 'Manutenção especializada para direção leve, segura e precisa.',
-    },
-    {
-      icon: <FiShield />,
-      title: 'Check-up preventivo',
-      text: 'Avaliação geral do veículo para prevenir falhas e gastos futuros.',
-    },
-  ]
+  {
+    icon: <FiCrosshair />,
+    title: 'Alinhamento 3D',
+    text: 'Tecnologia de ponta para garantir a estabilidade do seu veículo.',
+  },
+  {
+    icon: <FiActivity />,
+    title: 'Balanceamento',
+    text: 'Evite vibrações e desgaste irregular dos pneus.',
+  },
+  {
+    icon: <FiTool />,
+    title: 'Suspensão',
+    text: 'Revisão completa e troca de componentes.',
+  },
+  {
+    icon: <FiDisc />,
+    title: 'Freios',
+    text: 'Segurança total na revisão do sistema de freios.',
+  },
+  {
+    icon: <FiDroplet />,
+    title: 'Troca de óleo',
+    text: 'Lubrificantes de alta performance.',
+  },
+  {
+    icon: <FiBatteryCharging />,
+    title: 'Bateria',
+    text: 'Com garantia.',
+  },
+  {
+    icon: <FiCircle />,
+    title: 'Amortecedores',
+    text: 'Novos e recondicionados.',
+  },
+  {
+    icon: <FiCommand />,
+    title: 'Caixa de direção',
+    text: 'Novos e recondicionados.',
+  },
+]
+  
 
   const whatsappNumber = "556730143800";
 

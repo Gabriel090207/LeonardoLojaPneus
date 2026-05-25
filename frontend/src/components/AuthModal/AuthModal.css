@@ -22,11 +22,13 @@
 
   overflow-y: auto;
 
-  background: #111;
+  
   border-radius: 12px;
   padding: 24px;
 
-  border: 1px solid rgba(255,255,255,0.08);
+  background: #fafafa;
+
+  border: 1px solid rgba(0,0,0,0.06);
 
   z-index: 10000;
 
@@ -42,13 +44,14 @@
 }
 
 .authHeader h2 {
+    color: #000;
   font-size: 20px;
 }
 
 .authHeader button {
   background: none;
   border: none;
-  color: #fff;
+  color: #000;
   cursor: pointer;
 }
 
@@ -116,7 +119,7 @@
 }
 
 .authSwitch b {
-  color: #fff;
+  color: #000000;
   cursor: pointer;
 }
 
@@ -312,4 +315,26 @@
     transform: scale(0.95);
     opacity: 0;
   }
+}
+
+
+.forgotPassword {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  margin-top: -2px;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  color: var(--color-primary);
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.forgotPassword:hover {
+  opacity: 0.8;
 }

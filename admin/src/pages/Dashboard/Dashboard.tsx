@@ -26,13 +26,13 @@ function CustomTooltip({ active, payload, label }: any) {
     return (
       <div
         style={{
-          background: "#111",
-          border: "1px solid #2a2a2a",
+          background: "#fafafa",
+          border: "1px solid rgba(0,0,0,0.06)",
           padding: "10px",
           borderRadius: "8px",
         }}
       >
-        <p style={{ color: "#ccc", marginBottom: "5px" }}>
+        <p style={{ color: "#555", marginBottom: "5px" }}>
           {label}
         </p>
 
@@ -103,9 +103,9 @@ export default function Dashboard() {
               <CartesianGrid stroke="#2a2a2a" strokeDasharray="3 3" vertical={false} />
 
               {/* EIXOS */}
-              <XAxis dataKey="name" stroke="#888" />
+              <XAxis dataKey="name" stroke="#555" />
               <YAxis
-  stroke="#888"
+  stroke="#555"
   domain={[0, "dataMax + 100"]}
 />
 

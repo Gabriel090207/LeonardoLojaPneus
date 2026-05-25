@@ -28,3 +28,30 @@
   padding: 50px 60px;
   overflow-y: auto;
 }
+
+/* RESPONSIVIDADE */
+@media (max-width: 1024px) {
+  .adminContent {
+    padding: 40px 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .adminLayout {
+    flex-direction: column;
+  }
+
+  .adminSidebar {
+    width: 100%;
+  }
+
+  .adminContent {
+    padding: 25px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .adminContent {
+    padding: 20px 15px;
+  }
+}

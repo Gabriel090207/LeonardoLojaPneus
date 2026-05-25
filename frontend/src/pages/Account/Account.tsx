@@ -3,7 +3,12 @@ import { useState, useEffect } from "react";
 
 import { auth, db } from "../../services/firebase";
 import { doc, getDoc, collection, getDocs } from "firebase/firestore";
-import { onAuthStateChanged } from "firebase/auth";
+
+import {
+  onAuthStateChanged,
+  sendPasswordResetEmail,
+} from "firebase/auth";
+
 import { useNavigate } from "react-router-dom";
 
 import { FiUser, FiShoppingBag, FiMapPin } from "react-icons/fi";
@@ -71,6 +76,38 @@ const fetchCep = async (cep: string) => {
 }
 };
   
+
+const handleResetPassword = async () => {
+  try {
+
+    const user = auth.currentUser;
+
+    if (!user?.email) {
+      return;
+    }
+
+    await sendPasswordResetEmail(auth, user.email);
+
+    toast.custom((t) => (
+      <CustomToast
+        type="success"
+        message="Email de redefinição enviado"
+        t={t}
+      />
+    ));
+
+  } catch {
+
+    toast.custom((t) => (
+      <CustomToast
+        type="error"
+        message="Erro ao enviar email"
+        t={t}
+      />
+    ));
+
+  }
+};
 
   const handleSave = async () => {
   try {
@@ -397,6 +434,14 @@ if (snap.exists() && authUser) {
   onChange={(e) => setForm({ ...form, email: e.target.value })}
 />
 
+
+<button
+  className="resetPasswordBtn"
+  onClick={handleResetPassword}
+>
+  Redefinir senha
+</button>
+
 {pendingEmail && (
   <div className="verifyEmailCard">
     <div>
@@ -415,6 +460,11 @@ if (snap.exists() && authUser) {
 <input
   value={form.phone || ""}
   onChange={(e) => setForm({ ...form, phone: e.target.value })}
+/>
+<input
+  value={form.cpf || ""}
+  disabled
+  className="disabledInput"
 />
 
 <button

@@ -1,7 +1,7 @@
 .account {
   padding-top: 170px;
   min-height: 100vh;
-  background: #111;
+  background: #fff;
 }
 
 /* CONTAINER */
@@ -15,6 +15,7 @@
 .accountTitle {
   font-size: 28px;
   margin-bottom: 20px;
+  color: #000;
 }
 
 /* GRID */
@@ -40,9 +41,10 @@
   gap: 10px;
   padding: 0 14px;
 
-  border: 1px solid rgba(255,255,255,0.1);
-  background: transparent;
-  color: #fff;
+   background: #fafafa;
+
+  border: 1px solid rgba(0,0,0,0.06);
+
 
   cursor: pointer;
   transition: 0.2s;
@@ -51,6 +53,7 @@
 .accountMenu button.active {
   background: var(--color-primary);
   border-color: var(--color-primary);
+  color: #fff;
 }
 
 /* CONTENT */
@@ -61,15 +64,18 @@
 /* CARD */
 .accountCard {
   width: 100%;
-  background: #0d0d0d;
+   background: #fafafa;
+
+  border: 1px solid rgba(0,0,0,0.06);
   padding: 20px;
   border-radius: 16px;
 
   display: flex;
   flex-direction: column;
   gap: 12px;
+  color: #000;
 
-  border: 1px solid rgba(255,255,255,0.05);
+ 
 }
 
 /* INPUT */
@@ -78,10 +84,11 @@
   padding: 0 12px;
 
   border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.08);
+ 
 
-  background: #111;
-  color: #fff;
+  background: #ffffff;
+color: #111;
+border: 1px solid rgba(0,0,0,0.08);
 
   outline: none;
   transition: 0.2s;
@@ -264,4 +271,50 @@
 .verifyEmailCard button:disabled {
   opacity: 0.7;
   cursor: not-allowed;
+}
+
+
+@media (max-width: 768px) {
+.account  {
+    padding: 100px 0 70px;
+  }
+
+}
+
+.disabledInput {
+  opacity: 0.7;
+  cursor: not-allowed;
+
+  background: #f1f1f1 !important;
+  color: #666 !important;
+
+  border: 1px solid rgba(0,0,0,0.06) !important;
+}
+
+.disabledInput:focus {
+  box-shadow: none !important;
+  border-color: rgba(0,0,0,0.06) !important;
+}
+
+.resetPasswordBtn {
+  height: 42px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: rgba(227, 6, 19, 0.08);
+  border: 1px solid rgba(227, 6, 19, 0.18);
+
+  color: var(--color-primary);
+
+  font-weight: 600;
+  font-size: 14px;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.resetPasswordBtn:hover {
+  background: rgba(227, 6, 19, 0.12);
 }

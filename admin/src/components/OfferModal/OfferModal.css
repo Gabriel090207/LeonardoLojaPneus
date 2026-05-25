@@ -18,13 +18,14 @@
 
 /* MODAL */
 .offerModal {
-  background: #111;
+ background: #fafafa;
+  border: 1px solid rgba(0,0,0,0.06);
   width: 500px;
   max-height: 90vh;
   overflow-y: auto;
 
   border-radius: 12px;
-  border: 1px solid var(--color-border);
+ 
 
   padding: 24px;
 
@@ -37,12 +38,13 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  color: #111;
 }
 
 .offerModalHeader button {
   background: none;
   border: none;
-  color: #fff;
+  color: #111;
   cursor: pointer;
 }
 
@@ -56,9 +58,9 @@
 .offerModalBody input {
   padding: 12px;
   border-radius: 8px;
-  border: 1px solid var(--color-border);
-  background: #0d0d0d;
-  color: #fff;
+   background: #ffffff;
+color: #111;
+border: 1px solid rgba(0,0,0,0.08);
   outline: none;
   transition: 0.2s;
 }
@@ -86,16 +88,15 @@
   height: 48px;
 
   border-radius: 8px;
-  border: 1px solid rgba(255,255,255,0.08);
-  background: #0d0d0d;
-  color: #fff;
-
+  background: #ffffff;
+color: #111;
+border: 1px solid rgba(0,0,0,0.08);
   padding: 0 44px 0 14px;
 
   appearance: none;
   outline: none;
 
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M6 8l4 4 4-4'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M6 8l4 4 4-4'/></svg>");
   background-repeat: no-repeat;
   background-size: 18px;
   background-position: right 14px center;
@@ -123,13 +124,16 @@
   cursor: pointer;
 }
 
-.offerBtnCancel {
-  background: transparent;
-  border: 1px solid #555;
-  color: #ccc;
-}
+
 
 .offerBtnSave {
+ background: var(--color-primary);
+  color: #fff;
+}
+
+
+
+.btnSave {
   background: var(--color-primary);
   color: #fff;
 }
@@ -148,5 +152,55 @@
   to {
     transform: scale(1);
     opacity: 1;
+  }
+}
+
+/* RESPONSIVIDADE OFFER MODAL */
+@media (max-width: 768px) {
+  .offerModalOverlay {
+    padding: 15px;
+  }
+
+  .offerModal {
+    width: 100%;
+    padding: 18px;
+    border-radius: 10px;
+    max-height: 95vh;
+  }
+
+  .offerModalHeader {
+    margin-bottom: 16px;
+  }
+
+  .offerModalHeader h2 {
+    font-size: 18px;
+  }
+
+  .offerGrid2 {
+    grid-template-columns: 1fr;
+  }
+
+  .offerModalFooter {
+    flex-direction: column;
+  }
+
+  .offerModalFooter button {
+    width: 100%;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .offerModal {
+    padding: 15px;
+  }
+
+  .offerModalBody input,
+  .offerSelectInput {
+    font-size: 14px;
+  }
+
+  .offerModalHeader h2 {
+    font-size: 16px;
   }
 }

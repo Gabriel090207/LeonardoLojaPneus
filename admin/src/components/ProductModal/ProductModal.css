@@ -18,13 +18,14 @@
 
 /* MODAL */
 .modal {
-  background: #111;
+  background: #fafafa;
+  border: 1px solid rgba(0,0,0,0.06);
   width: 1100px; /* 🔥 mais largo */
   max-height: 94vh;
   overflow-y: auto;
 
   border-radius: 12px;
-  border: 1px solid var(--color-border);
+  
 
   padding: 24px;
 
@@ -37,12 +38,13 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  color: #111;
 }
 
 .modalHeader button {
   background: none;
   border: none;
-  color: #fff;
+  color: #111;
   cursor: pointer;
 }
 
@@ -58,8 +60,9 @@
   padding: 12px;
   border-radius: 8px;
   border: 1px solid var(--color-border);
-  background: #0d0d0d;
-  color: #fff;
+   background: #ffffff;
+color: #111;
+border: 1px solid rgba(0,0,0,0.08);
   outline: none;
   transition: 0.2s;
 }
@@ -102,7 +105,7 @@ input[type=number] {
 }
 
 .uploadArea {
-  border: 2px dashed #333;
+  border: 2px dashed #111;
   border-radius: 10px;
   padding: 35px;
   text-align: center;
@@ -113,7 +116,7 @@ input[type=number] {
   align-items: center;
   gap: 8px;
 
-  color: #aaa;
+  color: #111;
   transition: 0.2s;
 }
 
@@ -213,9 +216,9 @@ input[type=number] {
   height: 48px;
 
   border-radius: 8px;
-  border: 1px solid rgba(255,255,255,0.08);
-  background: #0d0d0d;
-  color: #fff;
+  background: #ffffff;
+color: #111;
+border: 1px solid rgba(0,0,0,0.08);
 
   padding: 0 44px 0 14px; /* 🔥 espaço igual loja */
 
@@ -225,7 +228,7 @@ input[type=number] {
   outline: none;
 
   /* 🔥 seta EXATA da loja */
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M6 8l4 4 4-4'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M6 8l4 4 4-4'/></svg>");
 
   background-repeat: no-repeat;
   background-size: 18px;
@@ -245,4 +248,81 @@ input[type=number] {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 12px;
+}
+
+/* RESPONSIVIDADE MODAL */
+@media (max-width: 1100px) {
+  .modal {
+    width: 95%;
+  }
+}
+
+@media (max-width: 768px) {
+  .modalOverlay {
+    padding: 15px;
+  }
+
+  .modal {
+    width: 100%;
+    padding: 18px;
+    max-height: 95vh;
+    border-radius: 10px;
+  }
+
+  .modalHeader {
+    margin-bottom: 16px;
+  }
+
+  .modalHeader h2 {
+    font-size: 18px;
+  }
+
+  .grid2,
+  .grid3 {
+    grid-template-columns: 1fr;
+  }
+
+  .uploadArea {
+    padding: 24px 16px;
+  }
+
+  .previewItem img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .modalFooter {
+    flex-direction: column;
+  }
+
+  .modalFooter button {
+    width: 100%;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal {
+    padding: 15px;
+  }
+
+  .modalBody input,
+  .modalBody textarea,
+  .selectInput {
+    font-size: 14px;
+  }
+
+  .uploadArea {
+    padding: 20px 14px;
+    font-size: 14px;
+  }
+
+  .previewImages {
+    gap: 8px;
+  }
+
+  .previewItem img {
+    width: 60px;
+    height: 60px;
+  }
 }

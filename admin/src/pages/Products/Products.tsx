@@ -118,7 +118,12 @@ export default function Products() {
         </td>
 
         <td>{product.name}</td>
-        <td>{product.price}</td>
+        <td>
+  {Number(product.price).toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL"
+  })}
+</td>
         <td className="stockCell">{product.stock}</td>
 
        <td className="actionsCell">

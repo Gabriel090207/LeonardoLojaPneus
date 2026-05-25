@@ -9,6 +9,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: #000;
 }
 
 /* AÇÕES */
@@ -29,7 +30,7 @@
   position: absolute;
   left: 10px;
   font-size: 16px;
-   color: #777;
+   color: var(--color-primary);
 }
 
 .searchInput {
@@ -39,10 +40,9 @@
   padding: 0 12px 0 34px;
 
   border-radius: 8px;
-  border: 1px solid var(--color-border);
-
-  background: #0d0d0d;
-  color: #fff;
+  background: #ffffff;
+color: #111;
+border: 1px solid rgba(0,0,0,0.08);
 
   outline: none;
   transition: 0.2s;
@@ -105,3 +105,61 @@
 .customers th:nth-child(3) { width: 160px; } /* telefone */
 .customers th:nth-child(4) { width: 160px; } /* data */
 
+
+
+/* RESPONSIVIDADE CUSTOMERS */
+@media (max-width: 900px) {
+
+  .customersTableWrapper {
+    overflow-x: auto;
+  }
+
+  .customers table {
+    min-width: 750px;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .customers {
+    gap: 16px;
+  }
+
+  .customersHeader h2 {
+    font-size: 18px;
+  }
+
+  .customersActions {
+    width: 100%;
+  }
+
+  .searchWrapper {
+    width: 100%;
+  }
+
+  .searchInput {
+    width: 100%;
+  }
+
+  .customers th,
+  .customers td {
+    padding: 12px 10px;
+    font-size: 14px;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .customersHeader h2 {
+    font-size: 16px;
+  }
+
+  .emptyWrapper {
+    font-size: 13px;
+    text-align: center;
+    padding: 20px;
+  }
+
+}

@@ -8,6 +8,7 @@
 .sectionTitle {
   font-size: 20px;
   font-weight: 600;
+  color: #000;
 }
 
 /* CARDS */
@@ -18,11 +19,14 @@
 }
 
 .card {
-  background: #111;
+  background: #fff;
+
+  border: 1px solid rgba(0,0,0,0.06);
   padding: 20px;
+  
   border-radius: var(--radius);
-  border: 1px solid var(--color-border);
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+ 
+  
   transition: 0.3s;
 }
 
@@ -34,19 +38,72 @@
 
 .card h3 {
   font-size: 14px;
-  color: var(--color-text-muted);
+  color: #555;
 }
 
 .card p {
   font-size: 24px;
   font-weight: bold;
   margin-top: 8px;
+   color: #111;
 }
 
 /* GRÁFICO */
 .chartBox {
-  background: #111;
+  background: #fff;
+   border: 1px solid rgba(0,0,0,0.06);
   padding: 20px; /* aumenta aqui */
   border-radius: var(--radius);
-  border: 1px solid var(--color-border);
+  
+}
+
+/* RESPONSIVIDADE DASHBOARD */
+@media (max-width: 768px) {
+  .dashboard {
+    gap: 20px;
+  }
+
+  .sectionTitle {
+    font-size: 18px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .card {
+    padding: 18px;
+  }
+
+  .card p {
+    font-size: 20px;
+  }
+
+  .chartBox {
+    padding: 15px;
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionTitle {
+    font-size: 16px;
+  }
+
+  .card {
+    padding: 15px;
+  }
+
+  .card h3 {
+    font-size: 13px;
+  }
+
+  .card p {
+    font-size: 18px;
+  }
+
+  .chartBox {
+    padding: 12px;
+  }
 }

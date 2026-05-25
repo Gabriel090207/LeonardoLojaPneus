@@ -1,24 +1,77 @@
 import "./Customers.css";
 import AdminLayout from "../../layouts/AdminLayout";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
 import { FiSearch } from "react-icons/fi";
 
+import { collection, onSnapshot } from "firebase/firestore";
+
+import { db } from "../../services/firebase";
+
 export default function Customers() {
+
   const [search, setSearch] = useState("");
 
-  // 🔥 mock por enquanto
-  const customers = [
-    {
-      id: "1",
-      name: "João Silva",
-      email: "joao@email.com",
-      phone: "11999999999",
-      createdAt: "10/03/2024",
-    },
-  ];
+  const [customers, setCustomers] = useState<any[]>([]);
+
+  // 🔥 BUSCAR CLIENTES
+  useEffect(() => {
+
+    const ref = collection(db, "users");
+
+    const unsubscribe = onSnapshot(ref, (snapshot) => {
+
+      const list: any[] = [];
+
+      snapshot.forEach((doc) => {
+
+        const data: any = doc.data();
+
+        // 🔥 IGNORA ADMINS
+        if (data.role !== "user") return;
+
+        list.push({
+          id: doc.id,
+
+          name: data.name || "Sem nome",
+
+          email: data.email || "-",
+
+          phone: data.phone || "-",
+
+          createdAt: data.createdAt
+            ? new Date(
+                data.createdAt.seconds * 1000
+              ).toLocaleDateString("pt-BR")
+            : "-",
+        });
+
+      });
+
+      setCustomers(list);
+
+    });
+
+    return () => unsubscribe();
+
+  }, []);
+
+  // 🔥 FILTRO BUSCA
+  const filteredCustomers = customers.filter((c) => {
+
+    const term = search.toLowerCase();
+
+    return (
+      c.name.toLowerCase().includes(term) ||
+      c.email.toLowerCase().includes(term) ||
+      c.phone.toLowerCase().includes(term)
+    );
+
+  });
 
   return (
+
     <AdminLayout>
 
       <div className="customers">
@@ -32,6 +85,7 @@ export default function Customers() {
 
             {/* BUSCA */}
             <div className="searchWrapper">
+
               <FiSearch className="searchIcon" />
 
               <input
@@ -41,6 +95,7 @@ export default function Customers() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
+
             </div>
 
           </div>
@@ -49,6 +104,7 @@ export default function Customers() {
 
         {/* TABELA */}
         <div className="tableWrapper">
+
           <table>
 
             <thead>
@@ -62,28 +118,44 @@ export default function Customers() {
 
             <tbody>
 
-              {customers.length === 0 ? (
+              {filteredCustomers.length === 0 ? (
+
                 <tr className="emptyRow">
+
                   <td colSpan={4}>
+
                     <div className="emptyWrapper">
-                      Nenhum cliente cadastrado
+                      Nenhum cliente encontrado
                     </div>
+
                   </td>
+
                 </tr>
+
               ) : (
-                customers.map((c) => (
+
+                filteredCustomers.map((c) => (
+
                   <tr key={c.id}>
+
                     <td>{c.name}</td>
+
                     <td>{c.email}</td>
+
                     <td>{c.phone}</td>
+
                     <td>{c.createdAt}</td>
+
                   </tr>
+
                 ))
+
               )}
 
             </tbody>
 
           </table>
+
         </div>
 
       </div>

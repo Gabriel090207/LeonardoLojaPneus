@@ -2,7 +2,8 @@
 
 :root {
   --color-primary: #e30613;
-  --color-dark: #0d0d0d;
+  --color-secondary: #f4c400;
+  --color-dark: #fafafa;
   --color-dark-light: #1a1a1a;
   --color-text: #ffffff;
   --color-text-muted: #bdbdbd;
@@ -20,6 +21,6 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background: #111;
+  background: #fafafa;
   color: var(--color-text);
 }

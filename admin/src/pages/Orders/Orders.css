@@ -9,6 +9,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: #000;
 }
 
 /* AÇÕES DIREITA */
@@ -114,4 +115,72 @@
 .orders .btnEdit {
   margin: 0 auto;          /* 🔥 centraliza */
   display: block;          /* necessário pro margin funcionar */
+}
+
+/* RESPONSIVIDADE ORDERS */
+@media (max-width: 900px) {
+
+  .ordersTableWrapper {
+    overflow-x: auto;
+  }
+
+  .orders table {
+    min-width: 850px;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .orders {
+    gap: 16px;
+  }
+
+  .ordersHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .ordersHeader h2 {
+    font-size: 18px;
+  }
+
+  .ordersActions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .searchWrapper {
+    width: 100%;
+  }
+
+  .searchInput {
+    width: 100%;
+  }
+
+  .ordersActions .selectInput {
+    width: 100%;
+  }
+
+  .orders th,
+  .orders td {
+    padding: 12px 10px;
+    font-size: 14px;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .ordersHeader h2 {
+    font-size: 16px;
+  }
+
+  .status {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+
 }

@@ -12,12 +12,20 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
 import toast from "react-hot-toast";
+import { api } from "../../services/api";
+
 import CustomToast from "../../components/CustomToast/CustomToast";
 
 export default function Checkout() {
   const [loading, setLoading] = useState(true);
   const [useDefaultAddress, setUseDefaultAddress] = useState(true);
   const [step, setStep] = useState(1);
+
+
+  
+
+const [, setPixData] = useState<any>(null);
+  const [pixLoading, setPixLoading] = useState(false);
 
 const [paymentMethod, setPaymentMethod] = useState("pix");
 const [cardNumber, setCardNumber] = useState("");
@@ -291,7 +299,9 @@ useEffect(() => {
 
         <h2>Finalizar compra</h2>
 
-        {step === 1 && (
+       {step === 1 && (
+  <>
+
   <div className="checkoutCard">
 
     <h3>Endereço de entrega</h3>
@@ -350,26 +360,38 @@ useEffect(() => {
 
           </div>
 
-          {/* BOTÃO */}
-          <div className="checkoutAction">
-            <button
-              className="nextBtn"
-              onClick={() => {
-                if (!form.cep || !form.address || !form.numero) {
-                  showToast("error", "Preencha todos os campos");
-                  return;
-                }
+       
+    </div>
 
-                setStep(2);
-              }}
-            >
-              Continuar
-            </button>
-          </div>
+<div className="checkoutActions">
 
-     </div>
+  <button
+    className="backBtn"
+    onClick={() => navigate(-1)}
+  >
+    Voltar
+  </button>
+
+  <button
+    className="confirmBtn"
+    onClick={() => {
+
+      if (!form.cep || !form.address || !form.numero) {
+        showToast("error", "Preencha todos os campos");
+        return;
+      }
+
+      setStep(2);
+
+    }}
+  >
+    Continuar
+  </button>
+
+</div>
+
+</>
 )}
-
 
 {step === 2 && (
   <div className="checkoutStep2">
@@ -512,15 +534,51 @@ useEffect(() => {
     Voltar
   </button>
 
-  <button
-    className="confirmBtn"
-    onClick={() => {
-      // depois vamos colocar lógica real aqui
-      console.log("Confirmar pedido");
-    }}
-  >
-    Confirmar pedido
-  </button>
+ <button
+  className="confirmBtn"
+  onClick={async () => {
+
+    if (paymentMethod === "pix") {
+
+      try {
+
+        setPixLoading(true);
+
+      const response = await api.post(
+  "/api/payment/pix",
+  {
+    items: cartItems,
+    total,
+  }
+);
+
+        setPixData(response.data);
+
+navigate("/payment/pix", {
+  state: {
+    pixData: response.data
+  }
+});
+
+console.log(response.data);
+
+      } catch (error) {
+
+        console.log(error);
+
+        showToast("error", "Erro ao gerar PIX");
+
+      } finally {
+
+        setPixLoading(false);
+
+      }
+    }
+
+  }}
+>
+  {pixLoading ? "Gerando PIX..." : "Confirmar pedido"}
+</button>
 
 </div>
     </div>
@@ -529,10 +587,31 @@ useEffect(() => {
 )}
 
 
+{pixLoading && (
 
+  <div className="pixLoadingOverlay">
+
+    <div className="pixLoadingCard">
+
+      <div className="pixSpinner"></div>
+
+      <h3>Gerando PIX...</h3>
+
+      <p>
+        Aguarde enquanto preparamos seu pagamento.
+      </p>
+
+    </div>
+
+  </div>
+
+)}
 
 
       </div>
+
+
+      
     </div>
   );
 }

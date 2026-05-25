@@ -14,6 +14,7 @@
 .offersHeader h2 {
   font-size: 20px;
   font-weight: 600;
+  color: #000;
 }
 
 /* BOTÃO */
@@ -34,8 +35,8 @@
 
 /* TABELA */
 .offersTableWrapper {
-  background: #111;
-  border: 1px solid var(--color-border);
+  background: #fff;
+   border: 1px solid rgba(0,0,0,0.06);
   border-radius: var(--radius);
   overflow: hidden;
 }
@@ -48,14 +49,15 @@
 
 /* HEADER */
 .offersTable thead {
-  background: #0d0d0d;
+  background: #fff;
+  
 }
 
 .offersTable th {
   padding: 14px;
   text-align: left;
   font-size: 13px;
-  color: var(--color-text-muted);
+   color: #555;
   white-space: nowrap;
 }
 
@@ -79,12 +81,13 @@
 
 /* LINHAS */
 .offersTable tbody tr {
-  border-top: 1px solid var(--color-border);
+    border-top: 1px solid rgba(0,0,0,0.06);
   transition: 0.2s;
+  color: #111;
 }
 
 .offersTable tbody tr:hover {
-  background: #1a1a1a;
+   background: #f4f4f4;
 }
 
 /* PREÇO */
@@ -107,7 +110,7 @@
   align-items: center;
   justify-content: center;
 
-  color: var(--color-text-muted);
+  color: #111;
   font-size: 14px;
 
   text-align: center;
@@ -118,4 +121,57 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* RESPONSIVIDADE OFFERS */
+@media (max-width: 900px) {
+  .offersHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .offersTableWrapper {
+    overflow-x: auto;
+  }
+
+  .offersTable {
+    min-width: 700px;
+  }
+}
+
+@media (max-width: 768px) {
+  .offers {
+    gap: 16px;
+  }
+
+  .offersHeader h2 {
+    font-size: 18px;
+  }
+
+  .offersBtnNew {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .offersTable th,
+  .offersTable td {
+    padding: 12px 10px;
+  }
+
+  .offersTable td {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .offersHeader h2 {
+    font-size: 16px;
+  }
+
+  .offersEmptyWrapper {
+    font-size: 13px;
+    padding: 20px;
+    white-space: normal;
+  }
 }

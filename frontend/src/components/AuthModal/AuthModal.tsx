@@ -9,6 +9,7 @@ import { auth, db } from "../../services/firebase";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 
 import { doc, setDoc, getDoc } from "firebase/firestore";
@@ -49,6 +50,15 @@ export default function AuthModal({ onClose, onLogin }: any) {
       .slice(0, 9);
   };
 
+  const maskCpf = (value: string) => {
+  return value
+    .replace(/\D/g, "")
+    .replace(/^(\d{3})(\d)/, "$1.$2")
+    .replace(/^(\d{3})\.(\d{3})(\d)/, "$1.$2.$3")
+    .replace(/\.(\d{3})(\d)/, ".$1-$2")
+    .slice(0, 14);
+};
+
   const fetchCep = async (cep: string) => {
     const cleanCep = cep.replace(/\D/g, "");
 
@@ -74,6 +84,76 @@ export default function AuthModal({ onClose, onLogin }: any) {
     }
   };
 
+
+  const validateCpf = (cpf: string) => {
+  const cleanCpf = cpf.replace(/\D/g, "");
+
+  if (cleanCpf.length !== 11) return false;
+
+  // evita CPFs repetidos
+  if (/^(\d)\1+$/.test(cleanCpf)) return false;
+
+  let sum = 0;
+  let remainder;
+
+  for (let i = 1; i <= 9; i++) {
+    sum += parseInt(cleanCpf.substring(i - 1, i)) * (11 - i);
+  }
+
+  remainder = (sum * 10) % 11;
+
+  if (remainder === 10 || remainder === 11) {
+    remainder = 0;
+  }
+
+  if (remainder !== parseInt(cleanCpf.substring(9, 10))) {
+    return false;
+  }
+
+  sum = 0;
+
+  for (let i = 1; i <= 10; i++) {
+    sum += parseInt(cleanCpf.substring(i - 1, i)) * (12 - i);
+  }
+
+  remainder = (sum * 10) % 11;
+
+  if (remainder === 10 || remainder === 11) {
+    remainder = 0;
+  }
+
+  if (remainder !== parseInt(cleanCpf.substring(10, 11))) {
+    return false;
+  }
+
+  return true;
+};
+
+
+const handleForgotPassword = async () => {
+
+  if (!form.email) {
+    showToast("error", "Digite seu email");
+    return;
+  }
+
+  try {
+
+    await sendPasswordResetEmail(auth, form.email);
+
+    showToast(
+      "success",
+      "Email de recuperação enviado"
+    );
+
+  } catch {
+    showToast(
+      "error",
+      "Não foi possível enviar o email"
+    );
+  }
+};
+
   const handleClose = () => {
   setClosing(true);
 
@@ -81,6 +161,8 @@ export default function AuthModal({ onClose, onLogin }: any) {
     onClose();
   }, 250);
 };
+
+
 
   const handleSubmit = async () => {
   if (loading) return; // 🔥 evita clique duplo
@@ -97,6 +179,11 @@ export default function AuthModal({ onClose, onLogin }: any) {
         showToast("error", "Senhas não coincidem");
         return;
       }
+
+      if (!validateCpf(form.cpf || "")) {
+  showToast("error", "CPF inválido");
+  return;
+}
 
       let userCredential;
 
@@ -121,6 +208,7 @@ export default function AuthModal({ onClose, onLogin }: any) {
         lastname: form.lastname,
         email: form.email,
         phone: form.phone,
+        cpf: form.cpf,
         address: form.address,
         bairro: form.bairro,
         numero: form.numero,
@@ -205,6 +293,13 @@ export default function AuthModal({ onClose, onLogin }: any) {
                   {showPassword ? <FiEyeOff /> : <FiEye />}
                 </button>
               </div>
+
+              <span
+  className="forgotPassword"
+  onClick={handleForgotPassword}
+>
+  Esqueceu sua senha?
+</span>
             </>
           ) : (
             <>
@@ -227,6 +322,14 @@ export default function AuthModal({ onClose, onLogin }: any) {
                   }
                 />
               </div>
+
+              <input
+  placeholder="CPF"
+  value={form.cpf || ""}
+  onChange={(e) =>
+    handleChange("cpf", maskCpf(e.target.value))
+  }
+/>
 
               <input
                 placeholder="CEP"

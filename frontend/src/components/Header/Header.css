@@ -66,8 +66,8 @@
 }
 
 .header__search:focus-within {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 2px rgba(227, 6, 19, 0.2);
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 2px rgba(227, 168, 6, 0.2);
 }
 
 .header__search-input:focus {
@@ -154,8 +154,8 @@
 /* CARRINHO */
 .mobile-cart-btn {
   border: none;
-  background: var(--color-primary);
-  color: #fff;
+  background: var(--color-secondary);
+  color: #000;
 }
 
 .mobile-search {
@@ -187,7 +187,7 @@
   width: 290px;
   max-width: 85%;
   height: 100vh;
-  background: #111;
+  background: #fff;
   border-right: 1px solid rgba(255,255,255,0.06);
   padding: 24px 20px;
   transform: translateX(-100%);
@@ -208,8 +208,8 @@
   margin-left: auto;
   border: none;
   border-radius: 50%;
-  background: rgba(255,255,255,0.03);
-  color: #fff;
+  background: rgba(0,0,0,0.06);
+  color: #000000;
 }
 
 .mobile-sidebar__logo {
@@ -231,8 +231,8 @@
 .mobile-sidebar__nav a {
   padding: 14px 16px;
   border-radius: 14px;
-  color: #fff;
-  background: rgba(255,255,255,0.02);
+  color: #000000;
+  background: rgba(0,0,0,0.06);
 }
 
 .mobile-login-btn {
@@ -240,8 +240,10 @@
   height: 46px;
   border: none;
   border-radius: 999px;
-  background: var(--color-primary);
-  color: #fff;
+   background: var(--color-primary);
+   color: #fff;
+
+  border: 1px solid rgba(0,0,0,0.06);
   font-weight: 600;
 
   display: flex;
@@ -304,9 +306,10 @@
   right: 120px;
 
   width: 190px;
-  background: #111;
+ background: #fafafa;
 
-  border: 1px solid rgba(255,255,255,0.06);
+  border: 1px solid rgba(0,0,0,0.06);
+
   border-radius: 14px;
 
   padding: 8px;
@@ -334,7 +337,7 @@
   border: none;
 
   background: transparent;
-  color: #fff;
+  color: #111;
 
   cursor: pointer;
   transition: 0.2s;
@@ -346,9 +349,8 @@
 
 /* HOVER */
 .dropdownItem:hover {
-  background: rgba(255,255,255,0.05);
+  background: rgba(0,0,0,0.05);
 }
-
 /* LOGOUT */
 .dropdownItem.logout {
   color: #ff4d4d;
@@ -397,10 +399,12 @@
   height: 46px;
 
   border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.12);
+ 
 
-  background: transparent;
-  color: #fff;
+  background: #fafafa;
+   color: #000;
+
+  border: 1px solid rgba(0,0,0,0.06);
 
   display: flex;
   align-items: center;

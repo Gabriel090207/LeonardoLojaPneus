@@ -17,7 +17,10 @@ import CartSidebar from "../CartSidebar/CartSidebar";
 
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth, db } from "../../services/firebase";
-import { doc, getDoc } from "firebase/firestore";
+import {
+  doc,
+  getDoc,
+} from "firebase/firestore";
 
 
 import toast from "react-hot-toast";
@@ -28,7 +31,11 @@ import { useCartUI } from "../../context/CartUIContext";
 
 
 
-function Header() {
+function Header({
+  globalSearch,
+  setGlobalSearch,
+}: any) {
+
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false)
   const [showAuth, setShowAuth] = useState(false);
@@ -40,6 +47,9 @@ function Header() {
  const { cartOpen, openCart, closeCart } = useCartUI();
 
   const dropdownRef = useRef<any>(null);
+
+
+
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (userAuth) => {
@@ -147,6 +157,11 @@ useEffect(() => {
   };
 }, []);
 
+
+
+
+
+
   return (
     <>
       <header className="header">
@@ -161,15 +176,21 @@ useEffect(() => {
               </Link>
 
               <div className="header__search">
-                <input
-                  type="text"
-                  placeholder="Buscar medidas, marcas ou modelos"
-                  className="header__search-input"
-                />
+               <input
+  type="text"
+  placeholder="Buscar medidas, marcas ou modelos"
+  className="header__search-input"
+  value={globalSearch}
+onChange={(e) => setGlobalSearch(e.target.value)}
+/>
                 <button className="header__search-button">
                   <FiSearch />
                 </button>
+
+                
               </div>
+
+
 
               {/* ACTIONS */}
               <div
@@ -244,16 +265,53 @@ useEffect(() => {
 
           {/* NAV */}
           <div className="header__bottom">
-            <div className="container header__bottom-container">
-              <nav className="header__nav">
-                <Link to="/">Início</Link>
-                <Link to="/pneus">Pneus</Link>
-                <Link to="/ofertas">Ofertas</Link>
-                <Link to="/servicos">Serviços</Link>
-                <Link to="/unidades">Unidades</Link>
-                <Link to="/contato">Contato</Link>
-              </nav>
-            </div>
+           <div className="container header__bottom-container">
+  <nav className="header__nav">
+
+    <Link
+      to="/"
+      onClick={() => setGlobalSearch("")}
+    >
+      Início
+    </Link>
+
+    <Link
+      to="/pneus"
+      onClick={() => setGlobalSearch("")}
+    >
+      Pneus
+    </Link>
+
+    <Link
+      to="/ofertas"
+      onClick={() => setGlobalSearch("")}
+    >
+      Ofertas
+    </Link>
+
+    <Link
+      to="/servicos"
+      onClick={() => setGlobalSearch("")}
+    >
+      Serviços
+    </Link>
+
+    <Link
+      to="/unidades"
+      onClick={() => setGlobalSearch("")}
+    >
+      Unidades
+    </Link>
+
+    <Link
+      to="/contato"
+      onClick={() => setGlobalSearch("")}
+    >
+      Contato
+    </Link>
+
+  </nav>
+</div>
           </div>
         </div>
 
@@ -267,11 +325,13 @@ useEffect(() => {
           </button>
 
           <div className="header__search mobile-search">
-            <input
-              type="text"
-              placeholder="Buscar..."
-              className="header__search-input"
-            />
+           <input
+  type="text"
+  placeholder="Buscar..."
+  className="header__search-input"
+  value={globalSearch}
+  onChange={(e) => setGlobalSearch(e.target.value)}
+/>
             <button className="header__search-button">
               <FiSearch />
             </button>
@@ -304,14 +364,69 @@ useEffect(() => {
           <img src={logo} />
         </div>
 
-        <nav className="mobile-sidebar__nav">
-          <Link to="/" onClick={closeMenu}>Início</Link>
-          <Link to="/pneus" onClick={closeMenu}>Pneus</Link>
-          <Link to="/ofertas" onClick={closeMenu}>Ofertas</Link>
-          <Link to="/servicos" onClick={closeMenu}>Serviços</Link>
-          <Link to="/unidades" onClick={closeMenu}>Unidades</Link>
-          <Link to="/contato" onClick={closeMenu}>Contato</Link>
-        </nav>
+      <nav className="mobile-sidebar__nav">
+
+  <Link
+    to="/"
+    onClick={() => {
+      closeMenu();
+      setGlobalSearch("");
+    }}
+  >
+    Início
+  </Link>
+
+  <Link
+    to="/pneus"
+    onClick={() => {
+      closeMenu();
+      setGlobalSearch("");
+    }}
+  >
+    Pneus
+  </Link>
+
+  <Link
+    to="/ofertas"
+    onClick={() => {
+      closeMenu();
+      setGlobalSearch("");
+    }}
+  >
+    Ofertas
+  </Link>
+
+  <Link
+    to="/servicos"
+    onClick={() => {
+      closeMenu();
+      setGlobalSearch("");
+    }}
+  >
+    Serviços
+  </Link>
+
+  <Link
+    to="/unidades"
+    onClick={() => {
+      closeMenu();
+      setGlobalSearch("");
+    }}
+  >
+    Unidades
+  </Link>
+
+  <Link
+    to="/contato"
+    onClick={() => {
+      closeMenu();
+      setGlobalSearch("");
+    }}
+  >
+    Contato
+  </Link>
+
+</nav>
 
       {user ? (
   <div className="mobile-user-actions">

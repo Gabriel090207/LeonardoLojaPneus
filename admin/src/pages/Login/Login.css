@@ -24,9 +24,11 @@
   width: 340px;
   padding: 30px;
 
-  background: #111;
+  background: #fafafa;
+
+  border: 1px solid rgba(0,0,0,0.06);
   border-radius: 12px;
-  border: 1px solid var(--color-border);
+  
 
   display: flex;
   flex-direction: column;
@@ -41,6 +43,7 @@
 
 .loginBox h2 {
   font-weight: 600;
+  color: #000;
 }
 
 /* ERRO */
@@ -58,9 +61,9 @@
   width: 100%;
   padding: 10px;
   border-radius: 8px;
-  border: 1px solid var(--color-border);
-  background: #0d0d0d;
-  color: #fff;
+    background: #ffffff;
+color: #111;
+border: 1px solid rgba(0,0,0,0.08);
   outline: none;
 }
 

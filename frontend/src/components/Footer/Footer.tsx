@@ -121,7 +121,7 @@ function Footer() {
 </a>
 
 <a
-  href="https://api.whatsapp.com/send/?phone=556730143800&text=Ol%C3%A1%2C+quero+saber+mais+sobre+os+produtos&type=phone_number&app_absent=0"
+  href="https://api.whatsapp.com/send/?phone=556730143800&text=Ol%C3%A1%2C+quero+saber+mais+sobre+os+pneus&type=phone_number&app_absent=0"
   target="_blank"
   rel="noopener noreferrer"
   aria-label="WhatsApp da Prime Pneus"
