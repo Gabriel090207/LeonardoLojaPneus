@@ -14,9 +14,14 @@ __pycache__/
 *.pyd
 *.egg-info/
 .pytest_cache/
+
+backend/venv/
 .venv/
 venv/
 env/
+
+backend/.env
+frontend/.env
 
 # ==========================
 # Node / React / Vite

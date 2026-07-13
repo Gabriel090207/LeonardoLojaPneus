@@ -26,15 +26,6 @@ def home():
 
 
 # ==========================
-# PAGBANK PIX
-# ==========================
-
-@app.post("/api/payment/pix")
-def create_pix_order(data=Body(...)):
-    return create_pix_payment(data)
-
-
-# ==========================
 # MERCADO PAGO TESTE
 # ==========================
 
@@ -51,12 +42,48 @@ def mercadopago_test():
 def mercadopago_order(data=Body(...)):
     return create_order(data)
 
+
+# ==========================
+# MERCADO PAGO WEBHOOK
+# ==========================
+
 @app.post("/api/mercadopago/webhook")
 async def mercadopago_webhook(request: Request):
-    body = await request.json()
+    try:
+        headers = dict(request.headers)
+        body = await request.json()
 
-    print("\n===== WEBHOOK MP =====")
-    print(body)
-    print("======================\n")
+        print("\n====================================")
+        print("WEBHOOK MERCADO PAGO")
+        print("====================================")
 
-    return {"status": "ok"}
+        print("\nHEADERS:")
+        print(headers)
+
+        print("\nBODY:")
+        print(body)
+
+        print("\nTYPE:")
+        print(body.get("type"))
+
+        print("\nACTION:")
+        print(body.get("action"))
+
+        print("\nDATA:")
+        print(body.get("data"))
+
+        print("\n====================================\n")
+
+        return {
+            "success": True,
+            "message": "Webhook recebido"
+        }
+
+    except Exception as e:
+        print("\nERRO NO WEBHOOK")
+        print(str(e))
+
+        return {
+            "success": False,
+            "error": str(e)
+        }
