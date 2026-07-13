@@ -1,6 +1,8 @@
 import "./Checkout.css";
 import { useEffect, useState } from "react";
 
+import MercadoPagoBrick from "../../components/MercadoPagoBrick";
+
 import { auth, db } from "../../services/firebase";
 import {
   doc,
@@ -35,19 +37,32 @@ const [cartItems, setCartItems] = useState<any[]>([]);
 const [products, setProducts] = useState<any[]>([]);
 const [offers, setOffers] = useState<any[]>([]);
 
-  const [savedAddress, setSavedAddress] = useState({
-    cep: "",
-    address: "",
-    bairro: "",
-    numero: "",
-  });
+ const [savedAddress, setSavedAddress] = useState({
+  cep: "",
+  address: "",
+  bairro: "",
+  numero: "",
+  cidade: "",
+  estado: "",
+});
 
-  const [form, setForm] = useState({
-    cep: "",
-    address: "",
-    bairro: "",
-    numero: "",
-  });
+const [form, setForm] = useState({
+  cep: "",
+  address: "",
+  bairro: "",
+  numero: "",
+  cidade: "",
+  estado: "",
+});
+
+const [payer, setPayer] = useState({
+  name: "",
+  lastname: "",
+  email: "",
+  cpf: "",
+  phone: "",
+  registrationDate: "",
+});
 
   const total = cartItems.reduce((acc, item) => {
   return acc + item.price * item.qty;
@@ -108,14 +123,27 @@ useEffect(() => {
         const data: any = docSnap.data();
 
         const addressData = {
-          cep: maskCEP(data.cep || ""),
-          address: data.address || "",
-          bairro: data.bairro || "",
-          numero: data.numero || "",
-        };
+  cep: maskCEP(data.cep || ""),
+  address: data.address || "",
+  bairro: data.bairro || "",
+  numero: data.numero || "",
+  cidade: data.cidade || "",
+  estado: data.estado || "",
+};
 
         setSavedAddress(addressData);
         setForm(addressData);
+
+
+        setPayer({
+  name: data.name || "",
+  lastname: data.lastname || "",
+  email: data.email || user.email || "",
+  cpf: data.cpf || "",
+  phone: data.phone || "",
+  registrationDate: new Date().toISOString(),
+});
+
 
       } catch {
         showToast("error", "Erro ao carregar dados");
@@ -133,11 +161,13 @@ useEffect(() => {
       setForm(savedAddress);
     } else {
       setForm({
-        cep: "",
-        address: "",
-        bairro: "",
-        numero: "",
-      });
+  cep: "",
+  address: "",
+  bairro: "",
+  numero: "",
+  cidade: "",
+  estado: "",
+});
     }
   }, [useDefaultAddress, savedAddress]);
 
@@ -160,11 +190,13 @@ useEffect(() => {
           return;
         }
 
-        setForm((prev) => ({
-          ...prev,
-          address: data.logradouro || "",
-          bairro: data.bairro || "",
-        }));
+       setForm((prev) => ({
+  ...prev,
+  address: data.logradouro || "",
+  bairro: data.bairro || "",
+  cidade: data.localidade || "",
+  estado: data.uf || "",
+}));
 
       } catch {
         showToast("error", "Erro ao buscar CEP");
@@ -358,6 +390,29 @@ useEffect(() => {
               />
             </div>
 
+
+            <div className="grid2">
+  <input
+    placeholder="Cidade"
+    value={form.cidade}
+    onChange={(e) =>
+      setForm({ ...form, cidade: e.target.value })
+    }
+  />
+
+  <input
+    placeholder="Estado"
+    maxLength={2}
+    value={form.estado}
+    onChange={(e) =>
+      setForm({
+        ...form,
+        estado: e.target.value.toUpperCase(),
+      })
+    }
+  />
+</div>
+
           </div>
 
        
@@ -376,10 +431,17 @@ useEffect(() => {
     className="confirmBtn"
     onClick={() => {
 
-      if (!form.cep || !form.address || !form.numero) {
-        showToast("error", "Preencha todos os campos");
-        return;
-      }
+     if (
+  !form.cep ||
+  !form.address ||
+  !form.numero ||
+  !form.bairro ||
+  !form.cidade ||
+  !form.estado
+) {
+  showToast("error", "Preencha todos os campos do endereço");
+  return;
+}
 
       setStep(2);
 
@@ -483,40 +545,13 @@ useEffect(() => {
 
   {/* DÉBITO / CRÉDITO */}
   {(paymentMethod === "debit" || paymentMethod === "credit") && (
-    <div className="cardForm">
-
-      <div className="cardNumberWrapper">
-
-  <input
-    placeholder="Número do cartão"
-    value={cardNumber}
-    onChange={(e) => {
-      const value = e.target.value;
-
-      setCardNumber(value);
-      setCardBrand(detectCardBrand(value));
-    }}
+  <MercadoPagoBrick
+    amount={total}
+    items={cartItems}
+    payer={payer}
+    shippingAddress={form}
   />
-
-  {cardBrand && (
-    <img
-      src={`/src/assets/cards/${cardBrand}.png`}
-      alt={cardBrand}
-      className="cardBrand"
-    />
-  )}
-
-</div>
-
-      <input placeholder="Nome no cartão" />
-
-      <div className="grid2">
-        <input placeholder="Validade" />
-        <input placeholder="CVV" />
-      </div>
-
-    </div>
-  )}
+)}
 
 </div>
       </div>

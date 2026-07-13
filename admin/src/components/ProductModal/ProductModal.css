@@ -146,6 +146,46 @@ input[type=number] {
   border: 1px solid var(--color-border);
 }
 
+/* 🎥 VIDEO PREVIEW */
+.videoPreview {
+  position: relative;
+  margin-top: 14px;
+}
+
+.previewVideo {
+  width: 100%;
+  max-height: 320px;
+
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.08);
+
+  object-fit: cover;
+  background: #000;
+}
+
+.removeVideo {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+
+  width: 24px;
+  height: 24px;
+
+  border-radius: 50%;
+  border: none;
+
+  background: #ff1a1a;
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  z-index: 2;
+}
+
 /* 🔥 BOTÃO REMOVER */
 .removeImg {
   position: absolute;
@@ -185,6 +225,12 @@ input[type=number] {
 .btnSave {
   background: var(--color-primary);
   color: #fff;
+}
+
+/* LOADING BUTTON */
+.btnSave.loading {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
 /* ANIMAÇÕES */
@@ -325,4 +371,8 @@ border: 1px solid rgba(0,0,0,0.08);
     width: 60px;
     height: 60px;
   }
+
+  .previewVideo {
+  max-height: 220px;
+}
 }

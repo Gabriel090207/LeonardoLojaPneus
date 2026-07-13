@@ -10,6 +10,16 @@ import {
   FiCommand,
 } from 'react-icons/fi'
 
+const whatsappNumber = "556730143800";
+
+const getWhatsLink = (service: string) => {
+  const message = `Olá! Tenho interesse no serviço de ${service}.`;
+
+  return `https://api.whatsapp.com/send/?phone=${whatsappNumber}&text=${encodeURIComponent(
+    message
+  )}`;
+};
+
 function Services() {
   const services = [
     {
@@ -67,10 +77,18 @@ function Services() {
 
         <div className="services__grid">
           {services.map((service, index) => (
-            <div className="services__item" key={index}>
+           <div className="services__item" key={index}>
               <div className="services__icon">{service.icon}</div>
               <h3>{service.title}</h3>
               <p>{service.text}</p>
+              <a
+  href={getWhatsLink(service.title)}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="services__button"
+>
+  Contratar agora
+</a>
             </div>
           ))}
         </div>

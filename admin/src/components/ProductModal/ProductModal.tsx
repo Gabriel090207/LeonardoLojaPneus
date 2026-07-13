@@ -18,9 +18,10 @@ export default function ProductModal({ onClose, onSave, product }: any) {
     .replace(/(^-|-$)/g, "");
     
   const [images, setImages] = useState<any[]>([]);
+  const [video, setVideo] = useState<any | null>(null);
   const [price, setPrice] = useState("R$ 0,00"); // visual
   const [priceValue, setPriceValue] = useState(0); // REAL 🔥
-
+  const [loading, setLoading] = useState(false);
   // 🔥 básicos
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -54,6 +55,21 @@ export default function ProductModal({ onClose, onSave, product }: any) {
     setImages((prev) => prev.filter((_, i) => i !== index));
   };
 
+  const handleVideo = (e: any) => {
+  const file = e.target.files[0];
+
+  if (!file) return;
+
+  setVideo({
+    file,
+    preview: URL.createObjectURL(file),
+  });
+};
+
+const removeVideo = () => {
+  setVideo(null);
+};
+
   // 💰 máscara preço
   const handlePrice = (value: string) => {
   let numbers = value.replace(/\D/g, "");
@@ -78,13 +94,20 @@ export default function ProductModal({ onClose, onSave, product }: any) {
   // 💾 salvar produto
   const handleSave = async () => {
     try {
+
+      setLoading(true);
+
       const uploadedImages: string[] = [];
+
+      let uploadedVideo = "";
 
       for (const img of images) {
         if (!img.file) {
           uploadedImages.push(img.preview); // imagem já existente
           continue;
         }
+
+
 
         const imageRef = ref(
           storage,
@@ -96,6 +119,25 @@ export default function ProductModal({ onClose, onSave, product }: any) {
 
         uploadedImages.push(url);
       }
+
+      /* 🎥 upload vídeo */
+if (video) {
+
+  // vídeo já existente
+  if (!video.file) {
+    uploadedVideo = video.preview;
+  } else {
+
+    const videoRef = ref(
+      storage,
+      `products/videos/${Date.now()}-${video.file.name}`
+    );
+
+    await uploadBytes(videoRef, video.file);
+
+    uploadedVideo = await getDownloadURL(videoRef);
+  }
+}
 
       const newProduct = {
         name,
@@ -121,13 +163,16 @@ export default function ProductModal({ onClose, onSave, product }: any) {
 
         image: uploadedImages[0] || null,
         images: uploadedImages,
+        video: uploadedVideo || null,
       };
 
       onSave(newProduct);
 
-    } catch (error) {
-      console.error("Erro no upload:", error);
-    }
+   } catch (error) {
+  console.error("Erro no upload:", error);
+} finally {
+  setLoading(false);
+}
   };
 
   // 🔥 preencher edição
@@ -166,6 +211,13 @@ setPriceValue(product.price || 0);
           file: null,
         })) || []
       );
+
+      if (product.video) {
+  setVideo({
+    preview: product.video,
+    file: null,
+  });
+}
     }
   }, [product]);
 
@@ -313,7 +365,7 @@ setPriceValue(product.price || 0);
               />
             </label>
 
-            {/* PREVIEW */}
+             {/* PREVIEW */}
             <div className="previewImages">
               {images.map((img, i) => (
                 <div key={i} className="previewItem">
@@ -331,7 +383,45 @@ setPriceValue(product.price || 0);
               ))}
             </div>
 
+
+
+            <label className="uploadArea">
+  <FiUpload size={22} />
+  <span>Adicionar vídeo</span>
+
+  <input
+    type="file"
+    accept="video/*"
+    onChange={handleVideo}
+    hidden
+  />
+</label>
+
+           
+
+
           </div>
+
+
+          {/* PREVIEW VÍDEO */}
+{video && (
+  <div className="videoPreview">
+
+    <video
+      src={video.preview}
+      controls
+      className="previewVideo"
+    />
+
+    <button
+      className="removeVideo"
+      onClick={removeVideo}
+    >
+      <FiX size={14} />
+    </button>
+
+  </div>
+)}
 
         </div>
 
@@ -339,9 +429,13 @@ setPriceValue(product.price || 0);
         <div className="modalFooter">
           <button onClick={onClose}>Cancelar</button>
 
-          <button className="btnSave" onClick={handleSave}>
-            Salvar
-          </button>
+          <button
+  className={`btnSave ${loading ? "loading" : ""}`}
+  onClick={handleSave}
+  disabled={loading}
+>
+  {loading ? "Salvando produto..." : "Salvar"}
+</button>
         </div>
 
       </div>

@@ -1,11 +1,13 @@
 import "./ProductDetails.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 
 import {
   FiMinus,
   FiPlus,
-  FiCheck
+  FiCheck,
+FiChevronLeft,
+FiChevronRight
 } from "react-icons/fi";
 
 import { FaWhatsapp } from "react-icons/fa";
@@ -31,15 +33,29 @@ function ProductDetails() {
   const { slug } = useParams();
 
   const [product, setProduct] = useState<any>(null);
-  const [images, setImages] = useState<string[]>([]);
-  const [selectedImage, setSelectedImage] = useState("");
+
+  const [media, setMedia] = useState<any[]>([]);
+  const [selectedMedia, setSelectedMedia] = useState<any>(null);
   const [qty, setQty] = useState(1);
 
   const [offer, setOffer] = useState<any>(null);
+  const thumbsRef = useRef<any>(null);
 
 
   const { openCart } = useCartUI();
 
+
+  const scrollThumbs = (direction: "left" | "right") => {
+
+  if (!thumbsRef.current) return;
+
+  const amount = 440;
+
+  thumbsRef.current.scrollBy({
+    left: direction === "right" ? amount : -amount,
+    behavior: "smooth",
+  });
+};
 
 
   const increase = () => setQty((prev) => prev + 1);
@@ -103,9 +119,26 @@ function ProductDetails() {
 
       setProduct(data);
 
-      const imgs = data.images || [];
-      setImages(imgs);
-      setSelectedImage(imgs[0]);
+     const imgs = data.images || [];
+
+
+const mediaItems = [
+  ...imgs.map((img: string) => ({
+    type: "image",
+    url: img,
+  })),
+];
+
+if (data.video) {
+  mediaItems.push({
+    type: "video",
+    url: data.video,
+  });
+}
+
+setMedia(mediaItems);
+
+setSelectedMedia(mediaItems[0] || null);
 
       const productId = docData.id;
 
@@ -193,26 +226,94 @@ const handleAddCart = async () => {
           <div className="product-gallery">
 
             <div className="product-gallery__main">
-              <img src={selectedImage} alt={product.name} />
-            </div>
 
-            <div className="product-gallery__thumbs">
-              {images.map((img, index) => (
-                <button
-                  key={index}
-                  className={
-                    selectedImage === img
-                      ? "thumb active"
-                      : "thumb"
-                  }
-                  onClick={() => setSelectedImage(img)}
-                >
-                  <img src={img} alt="Miniatura" />
-                </button>
-              ))}
-            </div>
+  {selectedMedia?.type === "video" ? (
+
+    <video
+      src={selectedMedia.url}
+      controls
+      className="product-main-video"
+    />
+
+  ) : (
+
+    <img
+      src={selectedMedia?.url}
+      alt={product.name}
+    />
+
+  )}
+
+</div>
+
+         <div className="thumbsWrapper">
+
+  {media.length > 4 && (
+    <button
+      className="thumbArrow left"
+      onClick={() => scrollThumbs("left")}
+    >
+      <FiChevronLeft />
+    </button>
+  )}
+
+  <div
+    className="product-gallery__thumbs"
+    ref={thumbsRef}
+  >
+
+    {media.map((item, index) => (
+
+      <button
+        key={index}
+        className={
+          selectedMedia?.url === item.url
+            ? "thumb active"
+            : "thumb"
+        }
+        onClick={() => setSelectedMedia(item)}
+      >
+
+        {item.type === "video" ? (
+
+          <div className="videoThumb">
+
+            <video
+              src={item.url}
+              muted
+            />
+
+            <span className="playIcon">
+              ▶
+            </span>
+
           </div>
 
+        ) : (
+
+          <img
+            src={item.url}
+            alt="Miniatura"
+          />
+
+        )}
+
+      </button>
+
+    ))}
+
+  </div>
+
+  {media.length > 4 && (
+    <button
+      className="thumbArrow right"
+      onClick={() => scrollThumbs("right")}
+    >
+      <FiChevronRight />
+    </button>
+  )}
+
+</div>
           {/* INFO */}
           <div className="product-info">
 
@@ -315,8 +416,11 @@ const handleAddCart = async () => {
 
         </div>
 
-      </div>
-    </section>
+           </div>
+
+    </div>
+
+  </section>
   );
 }
 

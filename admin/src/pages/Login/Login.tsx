@@ -43,6 +43,7 @@ export default function Login() {
     );
 
     const uid = userCredential.user.uid;
+    console.log("UID LOGADO:", uid);
 
     const userDoc = await getDoc(doc(db, "users", uid));
 
