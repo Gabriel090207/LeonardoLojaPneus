@@ -4,12 +4,14 @@ import { useEffect, useState } from "react";
 import MercadoPagoBrick from "../../components/MercadoPagoBrick";
 
 import { auth, db } from "../../services/firebase";
+
 import {
   doc,
   getDoc,
   collection,
   onSnapshot,
 } from "firebase/firestore";
+
 import { onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
@@ -23,15 +25,11 @@ export default function Checkout() {
   const [useDefaultAddress, setUseDefaultAddress] = useState(true);
   const [step, setStep] = useState(1);
 
-
-  
-
 const [, setPixData] = useState<any>(null);
   const [pixLoading, setPixLoading] = useState(false);
 
 const [paymentMethod, setPaymentMethod] = useState("pix");
-const [cardNumber, setCardNumber] = useState("");
-const [cardBrand, setCardBrand] = useState("");
+
 
 const [cartItems, setCartItems] = useState<any[]>([]);
 const [products, setProducts] = useState<any[]>([]);
@@ -206,19 +204,6 @@ useEffect(() => {
 
 
 
-  const detectCardBrand = (number: string) => {
-  const cleaned = number.replace(/\D/g, "");
-
-  if (cleaned.startsWith("4")) return "visa";
-
-  if (/^5[1-5]/.test(cleaned)) return "mastercard";
-
-  if (/^3[47]/.test(cleaned)) return "amex";
-
-  if (/^(4011|4312|4389)/.test(cleaned)) return "elo";
-
-  return "";
-};
 
 
 // 🔥 PRODUCTS
