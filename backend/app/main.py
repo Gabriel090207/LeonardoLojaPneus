@@ -49,18 +49,23 @@ def mercadopago_order(data=Body(...)):
 
 @app.post("/api/mercadopago/webhook")
 async def mercadopago_webhook(request: Request):
+
+    print("\n====================================")
+    print("WEBHOOK MERCADO PAGO")
+    print("====================================")
+
+    print("\nHEADERS:")
+    print(dict(request.headers))
+
+    raw_body = await request.body()
+
+    print("\nRAW BODY:")
+    print(raw_body.decode("utf-8"))
+
     try:
-        headers = dict(request.headers)
         body = await request.json()
 
-        print("\n====================================")
-        print("WEBHOOK MERCADO PAGO")
-        print("====================================")
-
-        print("\nHEADERS:")
-        print(headers)
-
-        print("\nBODY:")
+        print("\nJSON:")
         print(body)
 
         print("\nTYPE:")
@@ -72,18 +77,12 @@ async def mercadopago_webhook(request: Request):
         print("\nDATA:")
         print(body.get("data"))
 
-        print("\n====================================\n")
-
-        return {
-            "success": True,
-            "message": "Webhook recebido"
-        }
-
     except Exception as e:
-        print("\nERRO NO WEBHOOK")
+        print("\nNão foi possível interpretar o body como JSON.")
         print(str(e))
 
-        return {
-            "success": False,
-            "error": str(e)
-        }
+    print("\n====================================\n")
+
+    return {
+        "success": True
+    }
