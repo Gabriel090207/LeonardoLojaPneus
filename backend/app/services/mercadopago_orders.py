@@ -40,6 +40,8 @@ def create_order(data):
         "type": "online",
         "processing_mode": "automatic",
 
+        "notification_url": "https://primepneus-backend.onrender.com/api/mercadopago/webhook",
+
         "external_reference": str(uuid.uuid4()),
 
         "total_amount": str(data["formData"]["transaction_amount"]),
